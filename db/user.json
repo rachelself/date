@@ -1,0 +1,4 @@
+[
+  {"email":"sue@sue.com", "password":"1234", "firstName": "sue", "lastName": "bob", "gender": "female", "location": "37210", "lookingFor": "male", "age": 30, "_id": "473910437284938102384736"},
+  {"email":"jake@sue.com", "password":"5678", "firstName": "jack", "lastName": "james", "gender": "male", "location": "37221", "lookingFor": "male", "age": 35, "_id": "473910437284938102384736"},
+]
