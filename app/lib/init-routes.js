@@ -15,9 +15,23 @@ module.exports = (req, res, next)=>{
 
 function load(app, fn){
   var home = traceur.require(__dirname + '/../routes/home.js');
+  var users = traceur.require(__dirname + '/../routes/users.js');
+  var dates = traceur.require(__dirname + '/../routes/dates.js');
 
   app.get('/', dbg, home.index);
-  
+
+  app.post('/users/login', dbg, users.login);
+  app.get('/users/profile', dbg, users.profile);
+  app.get('/users/dates', dbg, users.dates);
+  app.get('/users/search', dbg, users.search);
+
+  app.get('/dates/new', dbg, dates.new);
+  app.post('/dates', dbg, dates.create);
+  app.get('/dates/:id', dbg, dates.show);
+  app.put('/dates/:id', dbg, dates.confirm);
+  app.delete('/dates/:id', dbg, dates.destroy);
+  app.get('/dates/:id/edit', dbg, dates.edit);
+  app.put('/dates/:id', dbg, dates.modify);
 
   console.log('Routes Loaded');
   fn();
