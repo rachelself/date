@@ -28,7 +28,7 @@ class User {
         user.age = obj.age;
         user.interests = [];
         user.values = [];
-        user.bio;
+        user.bio ='';
         user.suitors = [];
         user.blockedUsers = [];
         user.hasBadge = false;
