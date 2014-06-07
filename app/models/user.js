@@ -58,8 +58,8 @@ class User {
     Base.findById(id, users, User, fn);
   }
 
-  static findAll(id, fn){
-    Base.findAll(id, users, User, fn);
+  static findAll(fn){
+    Base.findAll(users, User, fn);
   }
 
 }
