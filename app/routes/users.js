@@ -6,17 +6,17 @@
 // app.get('/users/search', dbg, users.search);
 
 exports.login = (req, res)=>{
-
+  res.redirect('users/profile');
 };
 
 exports.profile = (req, res)=>{
-
+  res.render('users/profile');
 };
 
 exports.dates = (req, res)=>{
-
+  res.render('users/dates');
 };
 
 exports.search = (req, res)=>{
-
+  res.render('users/search');
 };
