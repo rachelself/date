@@ -8,18 +8,19 @@ block content
       include ../shared/nav
 
     section.bio
-      img.badge
-      .image-box
-        img(src='')
-        span.name Lily
-      .teaser-box
-        p.teaser-text--big
-        p.teaser-text--tagline
-      .stats
-        ul
-          li Nashville, TN
-          li Female
-          li 23
+      for each user in users
+        img.badge
+        .image-box
+          img(src='/img/person.jpg')
+          span.name user.name
+        .teaser-box
+          p.teaser-text--big user.
+          p.teaser-text--tagline
+        .stats
+          ul
+            li Nashville, TN
+            li Female
+            li 23
 
     section.interests-values-box
       .interests-box

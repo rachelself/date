@@ -1,0 +1,755 @@
+/* ======================================================================
+
+PALETTE=
+
+========================================================================= */
+
+// Creating some color variables...
+// clrs.cc
+@navy: #001f3f;
+@blue: #0074d9;
+@aqua: #7fdbff;
+@teal: #39cccc;
+@olive: #3d9970;
+@green: #2ecc40;
+@lime: #01ff70;
+@yellow: #ffdc00;
+@orange: #ff851b;
+@red: #ff4136;
+@maroon: #85144b;
+@fuchsia: #f012be;
+@purple: #b10dc9;
+@white: #fff;
+@silver: #ddd;
+@gray: #aaa;
+@black: #111;
+
+// Creating a function that contains more color variables. We will invoke it later.
+// http://flatuicolors.com/
+.flatUI-colors() {
+  @turquoise: #1abc9c;
+  @emerald: #2ecc71;
+  @peter-river: #3498db;
+  @amethyst: #9b59b6;
+  @wet-asphalt: #34495e;
+  @green-sea: #16a085;
+  @nephritis: #27ae60;
+  @belize-hole: #2980b9;
+  @wisteria: #8e44ad;
+  @midnight-blue: #2c3e50;
+  @sun-flower: #f1c40f;
+  @carrot: #e67e22;
+  @alizarin: #e74c3c;
+  @clouds: #ecf0f1;
+  @concrete: #95a5a6;
+  @orange: #f39c12;
+  @pumpkin: #d35400;
+  @pomegranate: #c0392b;
+  @silver: #bdc3c7;
+  @asbestos: #7f8c8d;
+};
+
+/* ======================================================================
+
+MODULAR= SCALE=
+
+========================================================================= */
+
+// http://modularscale.com/
+@ms-minor-second: 16 / 15;
+@ms-major-second: 9 / 8;
+@ms-minor-third:  6 / 5;
+@ms-major-third:  5 / 4;
+@ms-perfect-fourth:  4 / 3;
+@ms-aug-fourth-dim-fifth: 1.414;
+@ms-perfect-fifth:  3 / 2;
+@ms-minor-sixth:  8 / 5;
+@ms-golden: 1.618;
+@ms-major-sixth: 5 / 3;
+@ms-minor-seventh: 16 / 9;
+@ms-major-seventh: 15 / 8;
+@ms-octave: 2;
+@ms-major-tenth:  5 / 2;
+@ms-major-eleventh: 8 / 3;
+@ms-major-twelfth: 3;
+@ms-double-octave: 4;
+
+
+/* ======================================================================
+
+FONTS=
+KERN=
+
+========================================================================= */
+
+// ( http://www.awayback.com/revised-font-stack/ )
+// SANS-SERIF=
+@optima: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+@kern-optima: -0.015em;
+
+@futura: Futura, "Trebuchet MS", Arial, sans-serif;
+@kern-futura: -0.035em;
+
+@gill-sans: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+@kern-gill-sans: 0;
+
+@trebuchet: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+@kern-trebuchet: -0.025em;
+
+@helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
+@kern-helvetica: -0.015em;
+
+@verdana: Verdana, Geneva, sans-serif;
+@kern-verdana: -0.045em;
+
+@lucida-grande:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+@kern-lucida-grande: -0.045em;
+
+@geneva: Geneva, Tahoma, Verdana, sans-serif;
+
+@segoe: Segoe, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+@kern-segoe: 0.015em;
+
+@candara: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+@kern-candara: -0.025em;
+
+@calibri: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+@kern-calibri: -0.025em;
+
+@franklin: "Franklin Gothic Medium", Arial, sans-serif;
+@kern-franklin: -0.025em;
+
+@tahoma: Tahoma, Geneva, Verdana, sans-serif;
+@kern-tahoma: 0;
+
+//SERIF=
+@garamond: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+@kern-garamond: -0.015em;
+
+@lucida-bright: "Lucida Bright", Georgia, serif;
+@kern-lucida_bright: -0.015em;
+
+@palatino: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+@kern-palatino: -0.015em;
+
+@caslon: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
+@kern-caslon: 0.025em;
+
+@didot: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif;
+@kern-didot: -0.035em;
+
+@baskerville: Baskerville, "Baskerville old face", "Hoefler Text", Garamond, "Times New Roman", serif;
+@kern-baskerville: -0.025em;
+
+@hoefler: "Hoefler Text", "Baskerville old face", Garamond, "Times New Roman", serif;
+@kern-hoefler: -0.025em;
+
+@bodoni: "Bodoni MT", Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif;
+@kern-bodoni: -0.025em;
+
+@goudy: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+@kern-goudy: 0.025em;
+
+@constantia: Constantia, Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+@kern-constantia: -0.025em;
+
+@cambria: Cambria, Georgia, serif;
+@kern-cambria: 0;
+
+@antiqua: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+@kern-antiqua: -0.015em;
+
+
+//selected google fonts: ( https://github.com/ubuwaits/beautiful-web-type ) + some others
+// note: need to @import fonts over Google Fonts CDN or use @font-family for fonts stored locally.
+@abril-fatface: "Abril Fatface", cursive;
+@cardo: "Cardo", serif;
+@lato: 'Lato', sans-serif;
+@gentium-book-basic: "Gentium Book Basic", serif;
+@gravitas-one: "Gravitas One", cursive;
+@merriweather: "Merriweather", serif;
+@old-standard-tt: "Old Standard TT", serif;
+@open-sans: "Open Sans", sans-serif;
+@oswald:"Oswald", sans-serif;
+@playfair-display: "Playfair Display", serif;
+@pt-mono: "PT Mono", serif;
+@pt-sans: "PT Sans", sans-serif;
+@pt-sans-narrow: "PT Sans Narrow", sans-serif;
+@pt-serif: "PT Serif", serif;
+@racing-sans-one: "Racing Sans One", cursive;
+@reenie-beanie: "Reenie Beanie", cursive;
+@vollkorn: "Vollkorn", serif;
+
+
+/* ======================================================================
+
+EASE=
+
+========================================================================= */
+
+// ease-in
+@ease-in-quad: cubic-bezier(0.550,  0.085, 0.680, 0.530);
+@ease-in-cubic: cubic-bezier(0.550,  0.055, 0.675, 0.190);
+@ease-in-quart: cubic-bezier(0.895,  0.030, 0.685, 0.220);
+@ease-in-quint: cubic-bezier(0.755,  0.050, 0.855, 0.060);
+@ease-in-sine: cubic-bezier(0.470,  0.000, 0.745, 0.715);
+@ease-in-expo: cubic-bezier(0.950,  0.050, 0.795, 0.035);
+@ease-in-circ: cubic-bezier(0.600,  0.040, 0.980, 0.335);
+@ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
+
+// ease-out
+@ease-out-quad: cubic-bezier(0.250,  0.460, 0.450, 0.940);
+@ease-out-cubic: cubic-bezier(0.215,  0.610, 0.355, 1.000);
+@ease-out-quart: cubic-bezier(0.165,  0.840, 0.440, 1.000);
+@ease-out-quint: cubic-bezier(0.230,  1.000, 0.320, 1.000);
+@ease-out-sine: cubic-bezier(0.390,  0.575, 0.565, 1.000);
+@ease-out-expo: cubic-bezier(0.190,  1.000, 0.220, 1.000);
+@ease-out-circ: cubic-bezier(0.075,  0.820, 0.165, 1.000);
+@ease-out-back: cubic-bezier(0.175,  0.885, 0.320, 1.275);
+
+// ease-in-out
+@ease-in-out-quad: cubic-bezier(0.455,  0.030, 0.515, 0.955);
+@ease-in-out-cubic: cubic-bezier(0.645,  0.045, 0.355, 1.000);
+@ease-in-out-quart: cubic-bezier(0.770,  0.000, 0.175, 1.000);
+@ease-in-out-quint: cubic-bezier(0.860,  0.000, 0.070, 1.000);
+@ease-in-out-sine: cubic-bezier(0.445,  0.050, 0.550, 0.950);
+@ease-in-out-expo: cubic-bezier(1.000,  0.000, 0.000, 1.000);
+@ease-in-out-circ: cubic-bezier(0.785,  0.135, 0.150, 0.860);
+@ease-in-out-back: cubic-bezier(0.680, -0.550, 0.265, 1.550);
+
+
+/* ======================================================================
+
+UTILS=
+
+========================================================================= */
+
+// Vertical-Align function: works, but I haven't used it much yet so commented out by default.
+// .v-align() {
+//   position: relative;
+//   top: 50%;
+//   transform: translateY(-50%);
+// }
+
+// Edit Mode
+@edit: {
+
+  * {
+    background: fadeOut(#ccc, 10%);
+    transition: all 250ms ease-in-out;
+  }
+
+  html {
+
+    div {
+      border: 1px solid green;
+    }
+
+    [style], style {
+      border: 5px solid yellow;
+    }
+
+    style {
+      border: block;
+    }
+
+    img {
+      border: 5px solid red;
+    }
+
+    img[alt] {
+      border-color: green;
+    }
+
+    img[alt=""] {
+      border-color: yellow;
+    }
+
+    a {
+      border: 5px solid yellow;
+    }
+
+    a[title] {
+      border-color: green;
+    }
+
+    a[href="#"] {
+      outline-color: yellow;
+    }
+
+    a[target] {
+      border-color: red;
+    }
+
+    [class=""], [id=""] {
+      border: 5px solid yellow;
+    }
+
+  }
+
+};
+
+
+/* ======================================================================
+
+RESETS=
+
+========================================================================= */
+
+// normalize.css v3.0.1 | MIT License | git.io/normalize */
+@normalize: {
+
+  html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  main,
+  nav,
+  section,
+  summary {
+    display: block;
+  }
+
+  audio,
+  canvas,
+  progress,
+  video {
+    display: inline-block;
+    vertical-align: baseline;
+  }
+
+  audio:not([controls]) {
+    display: none;
+    height: 0;
+  }
+
+  [hidden],
+  template {
+    display: none;
+  }
+
+  a {
+    background: transparent;
+  }
+
+  a:active,
+  a:hover {
+    outline: 0;
+  }
+
+  abbr[title] {
+    border-bottom: 1px dotted;
+  }
+
+  b,
+  strong {
+    font-weight: bold;
+  }
+
+  dfn {
+    font-style: italic;
+  }
+
+  h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+  }
+
+  mark {
+    background: #ff0;
+    color: #000;
+  }
+
+  small {
+    font-size: 80%;
+  }
+
+  sub,
+  sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  sup {
+    top: -0.5em;
+  }
+
+  sub {
+    bottom: -0.25em;
+  }
+
+  img {
+    border: 0;
+  }
+
+  svg:not(:root) {
+    overflow: hidden;
+  }
+
+  figure {
+    margin: 1em 40px;
+  }
+
+  hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+  }
+
+  pre {
+    overflow: auto;
+  }
+
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+  }
+
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+  }
+
+  button {
+    overflow: visible;
+  }
+
+  button,
+  select {
+    text-transform: none;
+  }
+
+  button,
+  html input[type="button"],
+  input[type="reset"],
+  input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+  }
+
+  button[disabled],
+  html input[disabled] {
+    cursor: default;
+  }
+
+  button::-moz-focus-inner,
+  input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+
+  input {
+    line-height: normal;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+  }
+
+  input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+  }
+
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+
+  fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+  }
+
+  legend {
+    border: 0;
+    padding: 0;
+  }
+
+  textarea {
+    overflow: auto;
+  }
+
+  optgroup {
+    font-weight: bold;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  td,
+  th {
+    padding: 0;
+  }
+
+};
+
+// v4.3.0; removed html element styles and !important flag
+@html5-boilerplate-reset: {
+
+  ::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+  }
+
+  ::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+  }
+
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+  }
+
+  audio,
+  canvas,
+  img,
+  svg,
+  video {
+    display: inline-block;
+  }
+
+  fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .browsehappy {
+    background: #ccc;
+    color: #000;
+    margin: 0.2em 0;
+    padding: 0.2em 0;
+  }
+
+  .hidden {
+    display: none !important;
+    visibility: hidden;
+  }
+
+  .visuallyhidden {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .visuallyhidden.focusable:active,
+  .visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+  }
+
+  .invisible {
+    visibility: hidden;
+  }
+
+  .clearfix:before,
+  .clearfix:after {
+    content: " ";
+    display: table;
+  }
+
+  .clearfix:after {
+    clear: both;
+  }
+
+};
+
+
+@star-selector-reset: {
+
+  *,
+  *:before,
+  *:after {
+    border: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    vertical-align: baseline;
+  }
+
+};
+
+
+@inline-reset: {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 1em;
+  }
+
+  ol,
+  ul {
+    list-style: none;
+  }
+
+  blockquote {
+    quotes: none;
+    &:before,
+    &:after {
+      content: "";
+    }
+  }
+
+};
+
+
+@anchor-defaults: {
+
+  a {
+    color: @blue;
+    transition: color 200ms ease;
+    &:hover {
+      color: darken(@blue, 11%);
+    }
+    &:visited {
+      color: @purple;
+    }
+    &:link {
+      color: darken(@blue, 11%);
+    }
+    &:active {
+      color: darken(@blue, 11%);
+    }
+  }
+
+};
+
+
+@heading-reset: {
+
+  h1, h2, h3, h4, h5, h6 {
+    display: inline-block;
+    font-weight: normal;
+  }
+
+  h1 {
+    font-size: @fs * 1.6;
+  }
+
+  h2 {
+    font-size: @fs * 1.5;
+  }
+
+  h3 {
+    font-size: @fs * 1.4;
+  }
+
+  h4 {
+    font-size: @fs * 1.3;
+  }
+
+  h5 {
+    font-size: @fs * 1.2;
+  }
+
+  h6 {
+    font-size: @fs * 1.1;
+  }
+
+};
+
+
+.modular-scale(@proto-font-size; @proto-line-height; @scale-1; @scale-2) {
+
+  @base-font-size: round(@proto-font-size * @scale-1 * @scale-2, 4);
+  @base-line-height: round(@proto-line-height, 4);
+
+  @fs: @base-font-size;
+  @lh: round(@base-line-height * @base-font-size, 4);
+
+}
+
+.modular-scale(.72rem; 1.1; @ms-golden; 1);
+
+@normalize();
+@html5-boilerplate-reset();
+@star-selector-reset();
+@heading-reset();
+
+// @edit();
+
+// invoking a custom pallete...
+.flatUI-colors;
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+html {
+  font-size: @base-font-size;
+  line-height: @base-line-height;
+  overflow-x: hidden; // prevents sideways scrolling.
+}
+
+// From hereon, feel free to delete anything. The rest is just examples.
+// Also look up "Color Operation Functions" and "Color Blending Functions": ( http://lesscss.org/functions/#color-operations )
+
+body {
+  padding: @lh; // example of padding in proportion to line-height
+}
+
+header {
+  margin-bottom: @lh; // example of vertical-rhythm
+}
