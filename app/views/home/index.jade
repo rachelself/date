@@ -28,10 +28,22 @@ block content
 
     section.sign-up
       h2 Create Account
-      form(action='' method='post')
-        input(type='text' name='name')
-        input(type='email' name='email')
-        input(type='password' name='password')
+      form(action='/users' method='post')
+        input(type='text', name='firstName', placeholder='First Name')
+        input(type='text', name='lastName', placeholder='Last Name')
+        input(type='email', name='email', placeholder='Email')
+        input(type='password', name='password', placeholder='Password')
+        select(name='gender')
+          option Select Your Gender
+          option Male
+          option Female
+        input(type='text', name='location', placeholder='Zip Code')
+        select(name='lookingFor')
+          option Select What You're Looking For
+          option Male
+          option Female
+        input(type=number, name='age', placeholder='Age')
+        button Register
 
 //- block scripts
 //-   script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
