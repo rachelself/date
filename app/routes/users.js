@@ -30,7 +30,7 @@ exports.login = (req, res)=>{
   User.login(req.body, u=>{
     res.locals.user = u;
     req.session.userId = u._id;
-    res.redirect('users/profile');
+    res.redirect(`/users/${req.session.userId}`);
   });
 };
 
@@ -42,6 +42,10 @@ exports.profile = (req, res)=>{
       res.render('users/profile', {profile:profile});
     });
   }
+};
+
+exports.edit = (req, res)=>{
+  res.render('users/editProfile');
 };
 
 exports.dates = (req, res)=>{

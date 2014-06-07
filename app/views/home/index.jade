@@ -45,5 +45,12 @@ block content
         input(type=number, name='age', placeholder='Age')
         button Register
 
+    section.login
+      h1 Login
+      form(action='/users/login', method='post')
+        input(type='email', name='email', placeholder='Email')
+        input(type='password', name='password', placeholder='Password')
+        button Login
+
 //- block scripts
 //-   script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')

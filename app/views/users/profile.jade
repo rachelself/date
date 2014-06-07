@@ -10,9 +10,16 @@ block content
       section.bio
         img.badge
         .image-box
-          img(src='/img/person.jpg')
+          if(profile.photos.length)
+            each photo,i in profile.photos
+              if(photo.isPrimary)
+                img(src=photo[i].path)
+          else
+            img(src='/img/#{profile.gender}.png')
+
           span.name= profile.firstName
         .inner-bio-box
+          h3 Bio
           p.bio
         .stats
           ul
@@ -33,28 +40,37 @@ block content
            li Lorem.
 
     else
+      button
+        a(href='/users/editProfile') Edit Profile
       section.bio
         img.badge
         .image-box
-          img(src='/img/person.jpg')
+          if(user.photos.length)
+            each photo,i in user.photos
+              if(photo.isPrimary)
+                img(src=photo[i].path)
+          else
+            img(src='/img/#{user.gender}.png')
           span.name= user.firstName
         .inner-bio-box
-          p.bio
+          h3 Bio
+
+          p.bio Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas amet iure ad ipsa. Numquam quam ea ullam ipsam, accusantium officia unde vero temporibus neque quos, iusto nobis assumenda quaerat illo dicta iste eaque.
         .stats
           ul
             li= user.location
             li= user.gender
             li= user.age
-            button Edit
+
 
       section.interests-values-box
         .interests-box
           h3 Interests
-            button Edit
+
           p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas amet iure ad ipsa. Numquam quam ea ullam ipsam, accusantium officia unde vero temporibus neque quos, iusto nobis assumenda quaerat illo dicta iste eaque.
         .values-box
           h3 Values
-            button Edit
+
           ul
            li Lorem ipsum.
            li Lorem ipsum dolor.

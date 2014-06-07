@@ -25,10 +25,11 @@ function load(app, fn){
   app.get('/users', dbg, users.index);
   app.post('/users/login', dbg, users.login);
   app.post('/users', dbg, users.create);
-  app.get('/users/:id', dbg, users.profile);
   app.get('/users/dates', dbg, users.dates);
   app.get('/users/search', dbg, users.search);
-  app.get('/users/logout', dbg, users.logout);
+  app.get('/logout', dbg, users.logout);
+  app.get('/users/editProfile', dbg, users.edit);
+  app.get('/users/:id', dbg, users.profile);
 
   app.get('/dates/new', dbg, dates.new);
   app.post('/dates', dbg, dates.create);
