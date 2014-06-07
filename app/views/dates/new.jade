@@ -1,3 +1,14 @@
 extends ../shared/template
 
 block content
+
+  #controls
+    h1 Google Map
+    input#zip(type='text', autofocus=true, placeholder='zip code')
+    button#search Search
+
+  #map
+
+
+block scripts
+  script(src='/js/es6/compiled/map.js')

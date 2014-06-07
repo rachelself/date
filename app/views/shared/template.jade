@@ -5,15 +5,30 @@ html
     title= title
     link(href='/less/app.css', rel='stylesheet')
   body
+
+    #controls
+      h1 Google Map
+      input#zip(type='text', autofocus=true, placeholder='zip code')
+      select#radius(name='radius')
+        option 5
+        option 10
+        option 25
+        option 50+
+      button#search Search
+
+    #map
+
     block content
 
     script(src='/js/vendor/jquery-2.1.1.js')
     script(src='/js/vendor/lodash-2.4.1.js')
     script(src='/js/vendor/moment-2.6.0.js')
     script(src='/js/vendor/traceur.js')
+    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDPmOI1JdtKJD9O6SnTuVChF0jSfaVZRp8&sensor=true')
     script(src='/socket.io/socket.io.js')
     script(src='/js/es5/main.js')
     script(src='/js/es6/compiled/main.js')
     script(src='/js/es6/compiled/sockets.js')
+    script(src='/js/es6/compiled/map.js')
 
     block scripts
