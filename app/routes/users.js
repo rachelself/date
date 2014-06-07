@@ -12,7 +12,7 @@ var Meeting = traceur.require(__dirname + '/../../app/models/meeting.js');
 
 exports.index = (req, res)=>{
   if(req.session.userId){
-    res.redirect('users/profile');
+    res.redirect(`users/${req.session.userId}`);
   } else {
     res.redirect('/');
   }
@@ -22,7 +22,7 @@ exports.create = (req, res)=>{
   User.create(req.body, u=>{
     res.locals.user = u;
     req.session.userId = u._id;
-    res.redirect('users/profile');
+    res.redirect(`users/${u._id}`);
   });
 };
 
@@ -35,7 +35,13 @@ exports.login = (req, res)=>{
 };
 
 exports.profile = (req, res)=>{
-  res.render('users/profile');
+  if(req.params.id === req.session.userId){
+    res.render('users/profile');
+  } else {
+    User.findById(req.params.id, profile=>{
+      res.render('users/profile', {profile:profile});
+    });
+  }
 };
 
 exports.dates = (req, res)=>{

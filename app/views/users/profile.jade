@@ -6,30 +6,57 @@ block content
 
     header.header
       include ../shared/nav
-
-    section.bio
-      for each user in users
+    if(profile)
+      section.bio
         img.badge
         .image-box
           img(src='/img/person.jpg')
-          span.name user.name
-        .teaser-box
-          p.teaser-text--big user.
-          p.teaser-text--tagline
+          span.name= profile.firstName
+        .inner-bio-box
+          p.bio
         .stats
           ul
-            li Nashville, TN
-            li Female
-            li 23
+            li= profile.location
+            li= profile.gender
+            li= profile.age
 
-    section.interests-values-box
-      .interests-box
-        h3 Interests
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas amet iure ad ipsa. Numquam quam ea ullam ipsam, accusantium officia unde vero temporibus neque quos, iusto nobis assumenda quaerat illo dicta iste eaque.
-      .values-box
-        h3 Values
-        ul
-         li Lorem ipsum.
-         li Lorem ipsum dolor.
-         li Lorem ipsum.
-         li Lorem.
+      section.interests-values-box
+        .interests-box
+          h3 Interests
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas amet iure ad ipsa. Numquam quam ea ullam ipsam, accusantium officia unde vero temporibus neque quos, iusto nobis assumenda quaerat illo dicta iste eaque.
+        .values-box
+          h3 Values
+          ul
+           li Lorem ipsum.
+           li Lorem ipsum dolor.
+           li Lorem ipsum.
+           li Lorem.
+
+    else
+      section.bio
+        img.badge
+        .image-box
+          img(src='/img/person.jpg')
+          span.name= user.firstName
+        .inner-bio-box
+          p.bio
+        .stats
+          ul
+            li= user.location
+            li= user.gender
+            li= user.age
+            button Edit
+
+      section.interests-values-box
+        .interests-box
+          h3 Interests
+            button Edit
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas amet iure ad ipsa. Numquam quam ea ullam ipsam, accusantium officia unde vero temporibus neque quos, iusto nobis assumenda quaerat illo dicta iste eaque.
+        .values-box
+          h3 Values
+            button Edit
+          ul
+           li Lorem ipsum.
+           li Lorem ipsum dolor.
+           li Lorem ipsum.
+           li Lorem.
