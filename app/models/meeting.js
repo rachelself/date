@@ -5,6 +5,7 @@ var Mongo = require('mongodb');
 var traceur = require('traceur');
 var Base = traceur.require(__dirname + '/base.js');
 var User = traceur.require(__dirname + '/user.js');
+var _ = require('lodash');
 
 class Meeting {
 
@@ -19,8 +20,8 @@ class Meeting {
         meeting._id = Mongo.ObjectID(obj._id);
         meeting.when = new Date(`${obj.day} ${obj.time}`);
         meeting.location = obj.location;
-        meeting.creatorId = userId;
-        meeting.inviteeId = obj.inviteeId;
+        meeting.creatorId = Mongo.ObjectID(userId);
+        meeting.inviteeId = Mongo.ObjectID(obj.inviteeId);
         meeting.availability = obj.availability;
         meeting.isConfirmed = false;
         meeting.isComplete = false;
@@ -35,10 +36,34 @@ class Meeting {
     Base.findById(id, meetings, Meeting, fn);
   }
 
-  static findAll(id, fn){
-    Base.findAll(id, meetings, Meeting, fn);
+  static findByInviteeId(id, fn){
+    if(typeof id === 'string'){
+      if(id.length !== 24){fn(null); return;}
+      id = Mongo.ObjectID(id);
+    }
+
+    if(!(id instanceof Mongo.ObjectID)){fn(null); return;}
+
+    meetings.find({inviteeId:id}).toArray((e,records)=>{
+      records = records.map(r=>_.create(Meeting.prototype, r));
+      fn(records);
+    });
   }
 
+
+  static findByCreatorId(id, fn){
+    if(typeof id === 'string'){
+      if(id.length !== 24){fn(null); return;}
+      id = Mongo.ObjectID(id);
+    }
+
+    if(!(id instanceof Mongo.ObjectID)){fn(null); return;}
+
+    meetings.find({creatorId:id}).toArray((e,records)=>{
+      records = records.map(r=>_.create(Meeting.prototype, r));
+      fn(records);
+    });
+  }
 }
 
 module.exports = Meeting;

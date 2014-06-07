@@ -17,6 +17,7 @@ var User;
 var id = Mongo.ObjectID('473910437284938102384736');
 var d1 = {'day': '2014-06-09', 'time': '04:13', 'location': {'name': 'red robin'}, 'inviteeId': '473910437284938102384796', 'availability': 'Im available whenever', '_id': '473910437284938102384943'};
 var d2 = {'day': '2014-07-01', 'time': '07:00', 'location': {'name': 'J Alexanders'}, 'inviteeId': '473910437284938102384796', 'availability': 'Im available whenever', '_id': '473910437284938102384957'};
+var d3 = {'day': '2014-07-11', 'time': '07:00', 'location': {'name': 'J Alexanders'}, 'inviteeId': '473910437284938102384710', 'availability': 'Im available whenever', '_id': '473910437284938102384957'};
 
 describe('Meeting', function(){
   before(function(done){
@@ -33,7 +34,9 @@ describe('Meeting', function(){
         factory('user', function(users){
           Meeting.create(id, d1, function(){
             Meeting.create(id, d2, function(){
-              done();
+              Meeting.create(id, d3, function(){
+                done();
+              });
             });
           });
         });
@@ -89,5 +92,46 @@ describe('Meeting', function(){
       });
     });
   });
+
+  describe('.findByCreatorId', function(){
+    it('should return and array of correct meeting objects w string', function(done){
+      var creator = '473910437284938102384736';
+      Meeting.findByCreatorId(creator, function(records){
+        expect(records).to.have.length(2);
+        expect(records[1]).to.be.instanceof(Meeting);
+        done();
+      });
+    });
+
+    it('should return and array of correct meeting objects w mongoId', function(done){
+      Meeting.findByCreatorId(id, function(records){
+        expect(records).to.have.length(2);
+        expect(records[0]).to.be.instanceof(Meeting);
+        done();
+      });
+    });
+  });
+
+  describe('.findByInviteeId', function(){
+    it('should return and array of correct meeting objects w string', function(done){
+      var invitee = '473910437284938102384796';
+      Meeting.findByInviteeId(invitee, function(records){
+        expect(records).to.have.length(2);
+        expect(records[1]).to.be.instanceof(Meeting);
+        done();
+      });
+    });
+
+    it('should return and array of correct meeting objects w mongoId', function(done){
+      var invitee = Mongo.ObjectID('473910437284938102384796');
+      Meeting.findByInviteeId(invitee, function(records){
+        expect(records).to.have.length(2);
+        expect(records[0]).to.be.instanceof(Meeting);
+        done();
+      });
+    });
+  });
+
+
 
 });
