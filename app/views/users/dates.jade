@@ -5,10 +5,10 @@ block content
   .container__dates
 
     header.header
-      h1 Offline Dating
       include ../shared/nav
 
     section.interested-box
+      h3 Interested
       ul.interested-person
         li.person
          img(src='/img/person1.jpg')
@@ -32,6 +32,7 @@ block content
         li.nuke X
 
     section.mutual-box
+      h3 Mutual
       ul.mutual-person
         li
           img(src='/img/person4.jpg')
@@ -44,3 +45,19 @@ block content
         li
           img(src='/img/person6.jpg')
         li none
+      button#invite-mutual-person
+      button#invite-contact-person
+
+    section.dates-box
+      h3 Dates
+      ul.date-item
+        li
+          img(src='/img/location1.jpg')
+        li Applebee's
+        li
+          span.weekday Wednesday
+          span.digit-time 7:00
+        li something?
+
+    section.blocked-box
+      h5 Blocked Users
