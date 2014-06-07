@@ -9,7 +9,7 @@
 // app.put('/dates/:id', dbg, dates.modify);
 
 exports.new = (req, res)=>{
-
+  res.render('dates/new');
 };
 
 exports.create = (req, res)=>{
@@ -17,7 +17,7 @@ exports.create = (req, res)=>{
 };
 
 exports.show = (req, res)=>{
-
+  res.render('dates/show');
 };
 
 exports.confirm = (req, res)=>{
@@ -29,7 +29,7 @@ exports.destroy = (req, res)=>{
 };
 
 exports.edit = (req, res)=>{
-
+  res.render('dates/edit');
 };
 
 exports.modify = (req, res)=>{

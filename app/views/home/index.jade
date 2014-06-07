@@ -1,4 +1,37 @@
 extends ../shared/template
 
 block content
-  h1= title
+
+  .container__home
+
+    header.header
+      h1 Offline Dating
+      nav.nav
+        ul
+          li: a('#about') About
+          li: a('#features') Features
+          li: a('#sign-up') Sign Up
+          li: a('#sign-in') Sign In
+
+    section.top-section
+      p.teaser-text--big Real people meeting in real life. Furreal.
+      p.teaser-text--tagline Get started
+      .icon-arrow-down
+
+    section.features
+      img(src='/img/couple1.jpg')
+      h2 Features
+      ul
+        li certifiable humans
+        li don't share your contact information upfront
+        li safe space
+
+    section.sign-up
+      h2 Create Account
+      form(action='' method='post')
+        input(type='text' name='name')
+        input(type='email' name='email')
+        input(type='password' name='password')
+
+//- block scripts
+//-   script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')

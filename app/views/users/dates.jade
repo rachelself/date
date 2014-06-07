@@ -1,3 +1,46 @@
 extends ../shared/template
 
 block content
+
+  .container__dates
+
+    header.header
+      h1 Offline Dating
+      include ../shared/nav
+
+    section.interested-box
+      ul.interested-person
+        li.person
+         img(src='/img/person1.jpg')
+        li None
+        li
+          a(href='Link goes here')
+        li.nuke X
+      ul.interested-person
+        li.person
+         img(src='/img/person2.jpg')
+        li None
+        li
+          a(href='Link goes here')
+        li.nuke X
+      ul.interested-person
+        li.person
+         img(src='/img/person3.jpg')
+        li None
+        li
+          a(href='Link goes here')
+        li.nuke X
+
+    section.mutual-box
+      ul.mutual-person
+        li
+          img(src='/img/person4.jpg')
+        li none
+      ul.mutual-person
+        li
+          img(src='/img/person5.jpg')
+        li none
+      ul.mutual-person
+        li
+          img(src='/img/person6.jpg')
+        li none
