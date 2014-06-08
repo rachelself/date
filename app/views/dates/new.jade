@@ -7,27 +7,27 @@ block content
     header.header
       include ../shared/nav
 
-    section.new-date__top
+    section.top-section
       h3 New Date Proposal
       //- p.new-date__tagline for #{user.name}
 
-    section.new-date--form-box
+    section.form-box
 
-  #controls
-    h1 Google Map
-    input#cityOrZip(type='text', autofocus=true, placeholder='Zip Code or City, State')
-    input#companyName(type='text', placeholder='Italian, Theaters, Burgers, Beer, etc.')
-    button#search Search
+    #controls.controls
+      h1 Google Map
+      input#cityOrZip(type='text', autofocus=true, placeholder='Zip Code or City, State')
+      input#companyName(type='text', placeholder='Italian, Theaters, Burgers, Beer, etc.')
+      button#search Search
 
-  #dateAndTime
-    input#date(type='date')
-    input#time(type='time')
-    input#availability(type='textarea', placeholder='I am also available most evenings next week if that works better for you...')
+    #dateAndTime.date-and-time
+      input#date(type='date')
+      input#time(type='time')
+      input#availability(type='textarea', placeholder='I am also available most evenings next week if that works better for you...')
 
-  #searchListing
+    #searchListing.search-listing
 
-  #map
-  #streetMap
+    #map.map
+    #streetMap.street-map
 
 
 block scripts
