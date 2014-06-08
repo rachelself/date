@@ -9,6 +9,20 @@ block content
 
     section.new-date__top
       h3 New Date Proposal
-      p.new-date__tagline for #{user.name}
+      //- p.new-date__tagline for #{user.name}
 
     section.new-date--form-box
+
+  #controls
+    h1 Google Map
+    input#cityOrZip(type='text', autofocus=true, placeholder='Zip Code or City, State')
+    input#companyName(type='text', placeholder='Restaurant Name, Theatre Name, etc.')
+    button#search Search
+
+  #searchListing
+
+  #map
+
+
+block scripts
+  script(src='/js/es6/compiled/map.js')
