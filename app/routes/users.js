@@ -8,7 +8,6 @@
 var multiparty = require('multiparty');
 var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../../app/models/user.js');
-var Meeting = traceur.require(__dirname + '/../../app/models/meeting.js');
 
 
 exports.index = (req, res)=>{
@@ -54,14 +53,6 @@ exports.update = (req, res)=>{
   user.update(req.body);
   user.save(()=>{
     res.redirect(`/users/${req.session.userId}`);
-  });
-};
-
-exports.dates = (req, res)=>{
-  Meeting.findByInviteeId(req.session.userId, inviteeDates=>{
-    Meeting.findByCreatorId(req.session.userId, creatorDates=>{
-      res.render('users/dates', {dateInvites: inviteeDates, datesCreated: creatorDates});
-    });
   });
 };
 

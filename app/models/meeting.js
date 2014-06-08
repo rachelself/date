@@ -13,13 +13,13 @@ class Meeting {
     meetings.save(this, ()=>fn());
   }
 
-  static create(userId, obj, fn){
+  static create(userId, obj, location, fn){
     User.findById(obj.inviteeId, user=>{
       if(user){
         var meeting = new Meeting();
         meeting._id = Mongo.ObjectID(obj._id);
         meeting.when = new Date(`${obj.day} ${obj.time}`);
-        meeting.location = obj.location;
+        meeting.location = location;
         meeting.creatorId = Mongo.ObjectID(userId);
         meeting.inviteeId = Mongo.ObjectID(obj.inviteeId);
         meeting.availability = obj.availability;
