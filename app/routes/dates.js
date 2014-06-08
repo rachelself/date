@@ -24,6 +24,14 @@ exports.create = (req, res)=>{
   });
 };
 
+exports.index = (req, res)=>{
+  Meeting.findByInviteeId(req.session.userId, inviteeDates=>{
+    Meeting.findByCreatorId(req.session.userId, creatorDates=>{
+      res.render('dates/index', {dateInvites: inviteeDates, datesCreated: creatorDates});
+    });
+  });
+};
+
 exports.show = (req, res)=>{
   res.render('dates/show');
 };
@@ -40,6 +48,6 @@ exports.edit = (req, res)=>{
   res.render('dates/edit');
 };
 
-exports.modify = (req, res)=>{
+exports.update = (req, res)=>{
 
 };

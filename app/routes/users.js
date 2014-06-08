@@ -8,7 +8,6 @@
 var multiparty = require('multiparty');
 var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../../app/models/user.js');
-var Meeting = traceur.require(__dirname + '/../../app/models/meeting.js');
 
 
 exports.index = (req, res)=>{
@@ -17,6 +16,10 @@ exports.index = (req, res)=>{
   } else {
     res.redirect('/');
   }
+};
+
+exports.search = (req, res)=>{
+
 };
 
 exports.create = (req, res)=>{
@@ -57,14 +60,6 @@ exports.update = (req, res)=>{
   });
 };
 
-exports.dates = (req, res)=>{
-  Meeting.findByInviteeId(req.session.userId, inviteeDates=>{
-    Meeting.findByCreatorId(req.session.userId, creatorDates=>{
-      res.render('users/dates', {dateInvites: inviteeDates, datesCreated: creatorDates});
-    });
-  });
-};
-
 exports.editPhotos = (req, res)=>{
   res.render('users/editPhotos');
 };
@@ -77,6 +72,23 @@ exports.addPhotos = (req, res)=>{
     user.addPhotos(files.photos);
     user.save(()=>{
       res.redirect('/users/editPhotos');
+    });
+  });
+};
+
+exports.updatePhotos = (req, res)=>{
+  var user = res.locals.user;
+  user.updatePhotos(req.body);
+  user.save(()=>{
+    res.redirect('/users/editProfile');
+  });
+};
+
+exports.suitors = (req, res)=>{
+  User.findById(req.body.userId, u=>{
+    u.addSuitor(req.session.userId);
+    u.save(()=>{
+      res.redirect(`/users/${req.body.userId}`);
     });
   });
 };

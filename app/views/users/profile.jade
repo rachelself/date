@@ -17,6 +17,7 @@ block content
             each photo,i in profile.photos
               if(photo.isPrimary)
                 img(src=photo.path)
+                .blurb= photo.blurb
           else
             img(src='/img/#{profile.gender}.png')
 
@@ -51,6 +52,7 @@ block content
             each photo,i in user.photos
               if(photo.isPrimary)
                 img(src=photo.path)
+                .blurb= photo.blurb
           else
             img(src='/img/#{user.gender}.png')
         .stats

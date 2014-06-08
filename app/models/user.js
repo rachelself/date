@@ -9,11 +9,18 @@ var traceur = require('traceur');
 var Base = traceur.require(__dirname + '/base.js');
 var mkdirp = require('mkdirp');
 var fs = require('fs');
+var _ = require('lodash');
 
 class User {
 
   save(fn){
     users.save(this, ()=>fn());
+  }
+
+  addSuitor(id){
+    if(!(_.contains(this.suitors, id))){
+      this.suitors.push(id);
+    }
   }
 
   update(obj){
@@ -39,6 +46,25 @@ class User {
       fs.renameSync(p.path, __dirname+'/../static/img/'+ this._id + '/' + photo.fileName);
     });
   }
+
+  updatePhotos(photos){
+    this.photos = [];
+    photos.fileName.forEach((p,i)=>{
+      var photo = {};
+      photo.fileName = photos.fileName[i];
+      photo.path = photos.path[i];
+      if(i === (photos.primary * 1)){
+        photo.isPrimary = true;
+      } else {
+        photo.isPrimary = false;
+      }
+      photo.blurb = photos.blurb[i];
+      this.photos.push(photo);
+    });
+    console.log('=======================this.photos');
+    console.log(this.photos);
+  }
+
 
   static create(obj, fn){
     users.findOne({email:obj.email}, (err,user)=>{
