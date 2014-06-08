@@ -1,3 +1,14 @@
 extends ../shared/template
 
 block content
+
+  .container__new-date
+
+    header.header
+      include ../shared/nav
+
+    section.new-date__top
+      h3 New Date Proposal
+      p.new-date__tagline for #{user.name}
+
+    section.new-date--form-box
