@@ -727,7 +727,9 @@ RESETS=
 
 }
 
-.modular-scale(.72rem; 1.1; @ms-golden; 1);
+.modular-scale(.7rem; 1.3; @ms-golden; 1);
+
+// .modular-scale(.72rem; 1.1; @ms-golden; 1);
 
 @normalize();
 @html5-boilerplate-reset();
@@ -827,12 +829,15 @@ header {
     width: 100%;
     > .img-wrapper {
       border: 1px solid black;
-      float: left;
-      padding-right: @lh;
+      display: flex;
+      flex-direction: column;
+      // float: left;
+      // padding-right: @lh;
       width: 50%;
       > img {
-        max-width: 100%;
-        text-align: center;
+        align-self: center;
+        max-width: 91%;
+        // text-align: center;
       }
     }
     > .features-list {
@@ -886,6 +891,8 @@ header {
 }
 
 .container__profile {
+  // margin: 0 auto;
+  // max-width: @lh * 50;
   > .bio {
     // border: 1px solid black;
     display: flex;
@@ -913,13 +920,15 @@ header {
         align-self: center;
         max-width: @lh * 6;
       }
-      > .name {
-        bottom: -(@lh);
+      > .blurb {
+        bottom: -(@lh * 3);
         color: #ccc;
+        font-size: @fs * .6;
         left: 0;
+        padding: @lh / 2;
         position: absolute;
         right: 0;
-        text-align: center;
+        text-align: left;
         width: 100%;
       }
     }
@@ -927,9 +936,9 @@ header {
       align-self: flex-end;
       padding: @lh;
       width: 15%;
-      ul {
+      > ul {
         list-style: none;
-        li {
+        > li {
           font-size: @fs * .65;
           margin-bottom: @lh / 3;
           &:last-of-type {
@@ -960,8 +969,8 @@ header {
   }
   > .interests-values-box {
     display: flex;
-    margin: 0 auto;
-    width: 81%;
+    margin: -@lh auto;
+    width: 61%;
     > .interests-box, .values-box {
       // border: 1px solid green;
       width: 50%;
@@ -997,21 +1006,23 @@ header {
 }
 
 .container__dates {
-
+  // margin: 0 auto;
+  // max-width: @lh * 50;
   > .interested-box,
   > .mutual-box,
   > .dates-box {
     border: 1px solid black;
     margin: 0 auto @lh;
+    padding: @lh / 2;
     width: 81%;
-    h3 {
+    > h3 {
       background: #ccc;
       display: block;
       height: @lh * 2;
-      font-size: @fs * 1.1;
+      font-size: @fs * 1;
       line-height: @lh * 2.25;
       padding-left: @lh;
-      // padding: (@lh / 2) 0 (@lh / 2) @lh;
+      width: 100%;
     }
   }
   > .interested-box {
@@ -1025,7 +1036,8 @@ header {
       justify-content: center;
       border: 1px solid #ccc;
       margin: 0 auto;
-      padding: @lh;
+      max-width: @lh * 30;
+      padding: @lh / 2;
       width: 81%;
       > .image-box {
         align-items: center;
@@ -1034,33 +1046,238 @@ header {
         flex-direction: column;
         width: 25%;
         > img {
-          max-width: @lh * 5;
+          max-width: @lh * 2.75;
         }
       }
       > .name {
         border: 1px solid #ccc;
+        font-size: @fs * .73;
         text-align: center;
-        width: 25%;
+        width: 35%;
       }
       > .profile-link-box {
         border: 1px solid #ccc;
-        max-width: 25%;
+        font-size: @fs * .73;
+        text-align: center;
+        width: 15%;
       }
       > .remove-interest-box {
+        align-items: center;
         border: 1px solid #ccc;
-        max-width: 25%;
+        display: flex;
+        height: @lh * 2;
+        justify-content: center;
+        width: @lh * 2;
       }
     }
   }
   > .mutual-box {
-    > .mutual-person {
-      padding: @lh;
-      > .image-box {
-        max-width: @lh * 5;
-        > img {
-          max-width: @lh * 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    // min-height: 55vh;
+    > .mutual-box__inner {
+      align-items: center;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      > .mutual-box__another-inner {
+        align-items: center;
+        align-self: center;
+        border: 1px solid #ccc;
+        display: flex;
+        flex-direction: row;
+        // delete flex-wrap once jquery arrows are working!!
+        flex-wrap: wrap;
+        padding-bottom: @lh / 4;
+        padding-top: @lh / 4;
+        justify-content: space-around;
+        width: 100%;
+        > .arrow {
+          border: 1px solid #ccc;
+        }
+        > .mutual-person {
+          border: 1px solid black;
+          align-self: center;
+          display: flex;
+          flex-direction: column;
+          padding: @lh / 2;
+          width: @lh * 7;
+          > .image-box {
+            align-items: center;
+            border: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            > img {
+              max-width: @lh * 5;
+            }
+          }
+          > .person-name {
+            border: 1px solid #ccc;
+            font-size: @fs * .8;
+            padding-left: @lh / 2;
+            // width: @lh * 5;
+          }
+          > .profile-link-box {
+            border: 1px solid #ccc;
+            font-size: @fs * .8;
+            text-align: center;
+            // width: @lh * 5;
+          }
         }
       }
+      > .button-box {
+        display: flex;
+        position: absolute;
+        bottom: -@lh / 1.5;
+        justify-content: center;
+        left: 0;
+        right: 0;
+        width: 100%;
+        > button {
+          background: @pomegranate;
+          border: 1px solid white;
+          height: @lh * 1.3;
+          justify-self: center;
+          width: @lh * 4;
+          &:nth-of-type(1) {
+            margin-right: @lh * 1.5;
+          }
+          &:nth-of-type(2) {
+            margin-left: @lh * 1.5;
+          }
+        }
+      }
+    }
+  }
+  > .dates-box {
+    > .date-item {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding: @lh / 2;
+      > .image-box {
+        align-items: center;
+        border: 1px solid #ccc;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: @lh / 4;
+        width: 40%;
+        > img {
+          max-width: @lh * 8;
+        }
+      }
+      > .place-name {
+        align-self: center;
+        border: 1px solid #ccc;
+        text-align: center;
+        width: 20%;
+      }
+      > .time-box {
+        align-self: center;
+        border: 3px solid @black;
+        border-radius: 4px;
+        font-size: @fs * .8;
+        padding: @lh / 4;
+        text-align: center;
+        > .weekday {
+          border: 1px solid #ccc;
+        }
+        > .digit-time {
+          border: 1px solid #ccc;
+        }
+      }
+      > .something {
+        align-self: center;
+        border: 1px solid #ccc;
+      }
+    }
+  }
+  > .blocked-box {
+    align-items: center;
+    border: 1px solid #ccc;
+    display: flex;
+    margin: 0 auto @lh;
+    padding: @lh / 2;
+    width: 81%;
+    > h5 {
+      font-size: @fs * .8;
+    }
+    > ul {
+      font-size: @fs * .6;
+      list-style: none;
+      text-align: center;
+      > li {
+        display: inline-block;
+        margin-left: @lh / 2;
+        min-width: @lh * 4;
+      }
+    }
+  }
+}
+
+.container__search {
+  > .darth-vader {
+    border: 1px solid #ccc;
+    margin: 0 auto;
+    padding: @lh * 1.5;
+    margin-bottom: @lh / 2;
+    max-width: @lh * 22;
+    text-align: center;
+    width: 91%;
+    > .big-text {
+      font-size: @fs * 2;
+    }
+  }
+  > .person {
+    align-items: center;
+    border: 1px solid green;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto @lh / 2;
+    max-width: @lh * 33;
+    width: 91%;
+    > .image-box {
+      align-items: center;
+      border: 1px solid #ccc;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: @lh * 5;
+      > img {
+        max-width: @lh * 4;
+      }
+    }
+    > .bio-box {
+      border: 1px solid black;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: @lh;
+      width: 71%;
+      > .bio-text {
+        border: 1px solid #ccc;
+        font-size: @fs * .67;
+        margin-bottom: @lh / 2;
+        max-width: @lh * 18;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      > .name {
+        border: 1px solid #ccc;
+        font-size: @fs * .76;
+      }
+    }
+    > button {
+      border: 1px solid #ccc;
     }
   }
 }
