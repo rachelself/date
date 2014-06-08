@@ -13,7 +13,7 @@ block content
             li: a(href='#about') About
             li: a(href='#features') Features
             li: a(href='#sign-up') Sign Up
-            li: a(href='/users/profile') Sign In
+            li: a.sign-in(href='/users/profile') Sign In
 
       .top-section-text
         p.teaser-text--big Real people meeting in real life. Furreal.
@@ -50,9 +50,13 @@ block content
           input(type=number, name='age', placeholder='Age')
           button Get Started
 
-    section.login
-      h1 Login
-      form(action='/users/login', method='post')
-        input(type='email', name='email', placeholder='Email')
-        input(type='password', name='password', placeholder='Password')
-        button Login
+  section.loginForm
+    form#sign-in.account-form--outer(action='/users/login', method='post')
+      .account-form--inner
+        input.form-control(type='email', name='email', placeholder='Email', autofocus=true)
+        input.form-control(type='password', name='password', placeholder='Password')
+        button.btn.btn-primary Login
+        a.cancel(href='#') Cancel
+
+block scripts
+  script(src='/js/es6/compiled/landing.js')

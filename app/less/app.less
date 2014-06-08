@@ -4,6 +4,15 @@ PALETTE=
 
 ========================================================================= */
 
+// Dating App Color Scheme
+@od-orange: #f8ae59;
+@od-white: #fffcf0;
+@od-lpurple: #a794ac;
+@od-brown: #795446;
+@od-gray: #474747;
+@od-dpurple: #74022d;
+
+
 // Creating some color variables...
 // clrs.cc
 @navy: #001f3f;
@@ -307,6 +316,7 @@ RESETS=
 
   body {
     margin: 0;
+    position: relative;
   }
 
   article,
@@ -1333,3 +1343,82 @@ header {
   width: 800px;
   height: 600px;
 }
+
+/* ======================================================================
+
+MODAL LOGIN =
+
+========================================================================= */
+
+#sign-in {
+-webkit-transform: translateX(-100.5vw) translateY(-45vh);
+transform: translateX(-100.5vw) translateY(-45vh);
+}
+
+.show-modal {
+margin: auto;
+// opacity: 1;
+-webkit-transform: translateX(0) translateY(0) !important;
+transform: translateX(0) translateY(0) !important;
+-webkit-transition: -webkit-transform 300ms @ease-out-circ, opacity 600ms @ease-out-expo !important;
+transition: transform 300ms @ease-out-circ, opacity 600ms @ease-out-expo !important;
+z-index: 800;
+}
+
+.account-form--outer{
+  position: absolute;
+  top: 100px;
+  text-align: center;
+  width: 40vw;
+  height: 200px;
+  width: 100%;
+
+
+}
+
+.account-form--inner{
+  background-color: #fff;
+  width: 40vw;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+input{
+  margin-bottom: 10px;
+}
+
+.disabled{
+  pointer-events: none;
+}
+
+.cancel{
+  margin: 10px;
+  font-size: @fs * 0.5;
+}
+
+.cancel:hover{
+  text-decoration: underline;
+}
+
+.btn-primary{
+  background-color: @od-orange;
+  border: 0;
+}
+
+// .show-modal .container__home{
+//    /* Blur and de-color */
+//   -webkit-filter: blur(5px) grayscale(50%);
+//
+//   /* Recede */
+//   -webkit-transform: scale(0.9);
+// }
+//
+// .show-modal #sign-in{
+//    /* Regular size and visible */
+//   transform: scale(1); /* prefix me */
+//   opacity: 1;
+//
+//   /* Clickable */
+//   pointer-events: auto;
+// }
