@@ -8,16 +8,16 @@ block content
 
   form(method='post', action='/users/photos/update')
     button Update Photos
-    each photo in user.photos
-      input(type='hidden', name='path', val=photo.path)
-      input(type='hidden', name='fileName', val=photo.fileName)
+    each photo, i in user.photos
+      input(type='hidden', name='path', value=photo.path)
+      input(type='hidden', name='fileName', value=photo.fileName)
       .photo(style='display:inline-block;max-width:20%;')
         img(src=photo.path, style='max-width:100%;')
         p
           input(type='text', name='blurb', value=photo.blurb)
         if(photo.isPrimary)
-          input(type='radio', name='primary', value=photo.isPrimary, checked=true)
+          input(type='radio', name='primary', value=i, checked=true)
           span Primary
         else
-          input(type='radio', name='primary', value=photo.isPrimary)
+          input(type='radio', name='primary', value=i)
           span Primary
