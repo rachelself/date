@@ -33,7 +33,9 @@ exports.index = (req, res)=>{
 };
 
 exports.show = (req, res)=>{
-  res.render('dates/show');
+  Meeting.findById(req.params.id, meeting=>{
+    res.render('dates/show', {meeting:meeting});
+  });
 };
 
 exports.confirm = (req, res)=>{

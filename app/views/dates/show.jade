@@ -3,4 +3,38 @@ extends ../shared/template
 block content
 
   .container__show-date
-    
+
+    header.header
+      include ../shared/nav
+
+    section.new-date__top
+      h3 Date Proposal
+      //- p.new-date__tagline for #{user.name}
+
+    section.new-date--form-box
+
+    #dateInfo
+      .when
+        h3#time(data-day='#{meeting.day}', data-time='#{meeting.time}') When:
+
+      .where
+        h3(data-lat='#{meeting.location.lat}', data-lng='#{meeting.location.lng}') Where:
+        h4= meeting.location.name
+        p
+          img(src='#{meeting.location.ratingImg}')
+        p= meeting.location.address1
+        p #{meeting.location.city}, #{meeting.location.state} #{meeting.location.zip}
+        p= meeting.location.phone
+        button(data-lat='#{meeting.location.lat}', data-lng='#{meeting.location.lng}')#directions Get Directions
+
+      .controls
+        button#confirmDate Confirm
+        button#declineDate Decline
+        button#editDate Edit Details
+
+    #streetView
+    #map
+
+
+block scripts
+  script(src='/js/es6/compiled/date-show.js')

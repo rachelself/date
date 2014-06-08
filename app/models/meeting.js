@@ -18,7 +18,7 @@ class Meeting {
       if(user){
         var meeting = new Meeting();
         meeting._id = Mongo.ObjectID(obj._id);
-        meeting.when = new Date(`${obj.day} ${obj.time}`);
+        meeting.day = new Date(`${obj.day} ${obj.time} GMT-0500 (CDT)`);
         meeting.location = location;
         meeting.creatorId = Mongo.ObjectID(userId);
         meeting.inviteeId = Mongo.ObjectID(obj.inviteeId);
