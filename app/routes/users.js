@@ -5,6 +5,7 @@
 // app.get('/users/dates', dbg, users.dates);
 // app.get('/users/search', dbg, users.search);
 
+var multiparty = require('multiparty');
 var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../../app/models/user.js');
 var Meeting = traceur.require(__dirname + '/../../app/models/meeting.js');
@@ -60,6 +61,22 @@ exports.dates = (req, res)=>{
   Meeting.findByInviteeId(req.session.userId, inviteeDates=>{
     Meeting.findByCreatorId(req.session.userId, creatorDates=>{
       res.render('users/dates', {dateInvites: inviteeDates, datesCreated: creatorDates});
+    });
+  });
+};
+
+exports.editPhotos = (req, res)=>{
+  res.render('users/editPhotos');
+};
+
+exports.addPhotos = (req, res)=>{
+  var form = new multiparty.Form();
+
+  form.parse(req, (err, fields, files)=>{
+    var user = res.locals.user;
+    user.addPhotos(files.photos);
+    user.save(()=>{
+      res.redirect('/users/editPhotos');
     });
   });
 };

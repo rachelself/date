@@ -9,54 +9,45 @@ block content
 
     section.interested-box
       h3 Interested
-      ul.interested-person
-        li.person
-         img(src='/img/person1.jpg')
-        li None
-        li
-          a(href='Link goes here')
-        li.nuke X
-      ul.interested-person
-        li.person
-         img(src='/img/person2.jpg')
-        li None
-        li
-          a(href='Link goes here')
-        li.nuke X
-      ul.interested-person
-        li.person
-         img(src='/img/person3.jpg')
-        li None
-        li
-          a(href='Link goes here')
-        li.nuke X
+      .interested-person
+        .image-box
+           img(src='/img/old-lady.jpg')
+        .name user.name
+        .profile-link-box
+          a.profile-link(href='Link goes here') see profile
+        .remove-interest-box X
 
     section.mutual-box
       h3 Mutual
-      ul.mutual-person
-        li
+      .mutual-person
+        .person-name Name
+        .image-box
           img(src='/img/person4.jpg')
-        li none
-      ul.mutual-person
-        li
+        a.profile-link(href='') Link
+      .mutual-person Name
+        .person-name
+        .image-box
           img(src='/img/person5.jpg')
-        li none
-      ul.mutual-person
-        li
+        a.profile-link(href='') Link
+      .mutual-person
+        .person-name Name
+        .image-box
           img(src='/img/person6.jpg')
-        li none
-      button#invite-mutual-person
-      button#invite-contact-person
+        a.profile-link(href='') Link
+
+      .button-box
+        button#invite-mutual-person
+        button#invite-contact-person
 
     section.dates-box
       h3 Dates
-      ul.date-item
-        li
+      .date-item
+        .image-box
           img(src='/img/location1.jpg')
-        li Applebee's
-        li
-          span.weekday Wednesday
-          span.digit-time 7:00
+        .place-name Applebee's
+        .time
+          .weekday Wednesday
+          .digit-time 7:00
         li something?
 
     section.blocked-box

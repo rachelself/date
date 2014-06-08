@@ -4,46 +4,51 @@ block content
 
   .container__home
 
-    header.header
-      h1 Offline Dating
-      nav.nav
+    section#about.top-section
+
+      header.header
+        h1 Offline Dating
+        nav.nav
+          ul
+            li: a(href='#about') About
+            li: a(href='#features') Features
+            li: a(href='#sign-up') Sign Up
+            li: a(href='/users/profile') Sign In
+
+      .top-section-text
+        p.teaser-text--big Real people meeting in real life. Furreal.
+        p.teaser-text--tagline Get started
+        .icon-arrow-down Arrow
+
+    section#features.features
+      .img-wrapper
+        img(src='/img/couple2.jpg')
+      .features-list
+        h2 Features
         ul
-          li: a('#about') About
-          li: a('#features') Features
-          li: a('#sign-up') Sign Up
-          li: a('#sign-in') Sign In
+          li certifiable humans
+          li don't share your contact information upfront
+          li safe space
 
-    section.top-section
-      p.teaser-text--big Real people meeting in real life. Furreal.
-      p.teaser-text--tagline Get started
-      .icon-arrow-down
-
-    section.features
-      img(src='/img/couple1.jpg')
-      h2 Features
-      ul
-        li certifiable humans
-        li don't share your contact information upfront
-        li safe space
-
-    section.sign-up
-      h2 Create Account
-      form(action='/users' method='post')
-        input(type='text', name='firstName', placeholder='First Name')
-        input(type='text', name='lastName', placeholder='Last Name')
-        input(type='email', name='email', placeholder='Email')
-        input(type='password', name='password', placeholder='Password')
-        select(name='gender')
-          option Select Your Gender
-          option Male
-          option Female
-        input(type='text', name='location', placeholder='Zip Code')
-        select(name='lookingFor')
-          option Select What You're Looking For
-          option Male
-          option Female
-        input(type=number, name='age', placeholder='Age')
-        button Register
+    section#sign-up.sign-up
+      .sign-up__inner
+        h2 Create Account
+        form(action='/users' method='post')
+          input(type='text', name='firstName', placeholder='First Name')
+          input(type='text', name='lastName', placeholder='Last Name')
+          input(type='email', name='email', placeholder='Email')
+          input(type='password', name='password', placeholder='Password')
+          select(name='gender')
+            option Select Your Gender
+            option Male
+            option Female
+          input(type='text', name='location', placeholder='Zip Code')
+          select(name='lookingFor')
+            option Select What You're Looking For
+            option Male
+            option Female
+          input(type=number, name='age', placeholder='Age')
+          button Get Started
 
     section.login
       h1 Login

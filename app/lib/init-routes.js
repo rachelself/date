@@ -24,12 +24,14 @@ function load(app, fn){
 
   app.get('/users', dbg, users.index);
   app.post('/users/update', dbg, users.update);
+  app.post('/users/photos', dbg, users.addPhotos);
   app.post('/users/login', dbg, users.login);
   app.post('/users', dbg, users.create);
   app.get('/users/dates', dbg, users.dates);
   app.get('/users/search', dbg, users.search);
   app.get('/logout', dbg, users.logout);
   app.get('/users/editProfile', dbg, users.edit);
+  app.get('/users/editPhotos', dbg, users.editPhotos);
   app.get('/users/:id', dbg, users.profile);
 
   app.get('/dates/new', dbg, dates.new);

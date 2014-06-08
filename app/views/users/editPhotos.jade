@@ -1,0 +1,12 @@
+extends ../shared/template
+
+block content
+
+
+  form(method='post', action='/users/photos', enctype='multipart/form-data')
+    input(type='file', multiple='true', name='photos')
+    button Add Photos
+
+  each photo in user.photos
+    img(src=photo.path)
+    p= photo.blurb

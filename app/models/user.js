@@ -1,3 +1,5 @@
+/*jshint unused:false*/
+
 'use strict';
 
 var bcrypt = require('bcrypt');
@@ -5,6 +7,8 @@ var users = global.nss.db.collection('users');
 var Mongo = require('mongodb');
 var traceur = require('traceur');
 var Base = traceur.require(__dirname + '/base.js');
+var mkdirp = require('mkdirp');
+var fs = require('fs');
 
 class User {
 
@@ -17,6 +21,23 @@ class User {
     this.interests = obj.interests;
     this.values = obj.values;
     this.bio = obj.bio;
+  }
+
+  addPhotos(photos){
+    photos.forEach((p,i)=>{
+      var photo = {};
+      photo.fileName = p.originalFilename;
+      photo.path = `/img/${this._id}/${photo.fileName}`;
+      if(i){
+        photo.isPrimary = false;
+      } else {
+        photo.isPrimary = true;
+      }
+      photo.blurb = '';
+      this.photos.push(photo);
+      mkdirp(`${__dirname}/../static/img/${this._id}/`);
+      fs.renameSync(p.path, __dirname+'/../static/img/'+ this._id + '/' + photo.fileName);
+    });
   }
 
   static create(obj, fn){

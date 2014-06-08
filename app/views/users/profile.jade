@@ -13,7 +13,7 @@ block content
           if(profile.photos.length)
             each photo,i in profile.photos
               if(photo.isPrimary)
-                img(src=photo[i].path)
+                img(src=photo.path)
           else
             img(src='/img/#{profile.gender}.png')
 
@@ -24,7 +24,6 @@ block content
             li= profile.gender
             li= profile.age
         .inner-bio-box
-          h3 Bio
           p.bio-text= profile.bio
 
       section.interests-values-box
@@ -48,7 +47,7 @@ block content
           if(user.photos.length)
             each photo,i in user.photos
               if(photo.isPrimary)
-                img(src=photo[i].path)
+                img(src=photo.path)
           else
             img(src='/img/#{user.gender}.png')
           span.name= user.firstName
@@ -58,7 +57,6 @@ block content
             li= user.gender
             li= user.age
         .inner-bio-box
-          h3 Bio
           p.bio-text= user.bio
 
       section.interests-values-box
