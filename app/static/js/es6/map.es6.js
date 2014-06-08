@@ -19,6 +19,38 @@ function ajax(url, verb, data={}, success=r=>console.log(r), dataType='html'){//
     $('#search').click(getLocations);
     $('#map').on('click', '.directions', getDirections);
     $('#searchListing').on('click', '.dateLocation', chooseDateLocation);
+    $('#searchListing').on('click', '.editDate', editDate);
+    $('#searchListing').on('click', '.confirmDate', createDate);
+  }
+
+  function createDate(){
+    var obj = {};
+    obj.rating = $(this).attr('data-rating');
+    obj.lat = $(this).attr('data-lat');
+    obj.lng = $(this).attr('data-lng');
+    obj.url = $(this).prev().attr('href');
+    obj.address1 = $(this).siblings('.address1').text();
+    obj.city = $(this).attr('data-city');
+    obj.state = $(this).attr('data-state');
+    obj.zip = $(this).attr('data-zip');
+    obj.phone = $(this).attr('data-phone');
+    obj.ratingImg = $(this).attr('data-ratingImg');
+    obj.day = $('#date').val();
+    obj.time = $('#time').val();
+    obj.availability = $('#availability').val();
+
+    ajax('/dates', 'POST', obj, jsonObj=>{
+      console.log(jsonObj);
+    }, 'json');
+  }
+
+  function editDate() {
+    $('#cityOrZip').show();
+    $('#companyName').show();
+    $('#search').show();
+    clearListing();
+    initMap(36.17, -86.778, 13);
+    geoLocate();
   }
 
   function chooseDateLocation() {
@@ -26,28 +58,24 @@ function ajax(url, verb, data={}, success=r=>console.log(r), dataType='html'){//
     obj.rating = $(this).attr('data-rating');
     obj.lat = $(this).attr('data-lat');
     obj.lng = $(this).attr('data-lng');
-    obj.url = $('.dateLocation').prev().attr('href');
-    obj.address1 = $(this).attr('data-address1');
+    obj.url = $(this).prev().attr('href');
+    obj.address1 = $(this).siblings('.address1').text();
     obj.city = $(this).attr('data-city');
     obj.state = $(this).attr('data-state');
     obj.zip = $(this).attr('data-zip');
+    obj.phone = $(this).attr('data-phone');
     obj.ratingImg = $(this).attr('data-ratingImg');
-    obj.name = $(this).attr('data-name');
+    obj.name = $(this).siblings('h3').text();
 
-    // ajax('/locations', 'POST', obj, jsonObj=>{
-    //   console.log(jsonObj);
-      $('#searchListing').empty();
-      $('#cityOrZip').hide();
-      $('#companyName').hide();
-      $('#search').hide();
-      var confirmDate = $('<button id="confirmDate">').text('Okay, I am ready. Send!');
-      var editDate = $('<button id="editDate">').text('Wait! I need to change something');
-      $('#controls').append(confirmDate).append(editDate);
-      createSearchListing(obj);
-      end = new google.maps.LatLng(obj.lat, obj.lng);
-      initialize(obj.lat, obj.lng);
-
-    // }, 'json');
+    $('#searchListing').empty();
+    $('#cityOrZip').hide();
+    $('#companyName').hide();
+    $('#search').hide();
+    createSearchListing(obj);
+    $('.dateLocation').text('Send Invitation').addClass('confirmDate');
+    $('.dateLocation').after('<button class="editDate">Edit Invitation</button>');
+    end = new google.maps.LatLng(obj.lat, obj.lng);
+    initialize(obj.lat, obj.lng);
   }
 
 
@@ -119,12 +147,12 @@ function ajax(url, verb, data={}, success=r=>console.log(r), dataType='html'){//
     var div = `<div class='${listing.name}'>
               <h3>${listing.name}</h3>
               <div><img src='${listing.ratingImg}'></div>
-              <p>${listing.address1}</p>
+              <p class='address1'>${listing.address1}</p>
               <p>${listing.city}, ${listing.state} ${listing.zip}</p>
               <p>${listing.phone}</p>
               <a href='${listing.url}'>View on Yelp</a>
-              <button class='dateLocation', data-name='${listing.name}', data-address1='${listing.address1}', data-city='${listing.city}', data-state='${listing.state}', data-zip='${listing.zip}',
-              data-ratingImg='${listing.ratingImg}', data-rating='${listing.rating}', data-lat='${listing.lat}', data-lng='${listing.lng}'>This is it!</button>
+              <button class='dateLocation', data-city='${listing.city}', data-state='${listing.state}', data-zip='${listing.zip}',
+              data-phone='${listing.phone}', data-ratingImg='${listing.ratingImg}', data-rating='${listing.rating}', data-lat='${listing.lat}', data-lng='${listing.lng}'>This is it!</button>
               </div>`;
     $('#searchListing').append(div);
   }
