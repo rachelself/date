@@ -23,6 +23,7 @@ function load(app, fn){
 
   app.get('/', dbg, home.index);
 
+  app.get('/users/search', dbg, users.search);
   app.get('/users', dbg, users.index);
   app.post('/users/suitors', dbg, users.suitors);
   app.post('/users/update', dbg, users.update);
@@ -36,6 +37,7 @@ function load(app, fn){
   app.get('/users/editPhotos', dbg, users.editPhotos);
   app.get('/users/:id', dbg, users.profile);
 
+
   app.get('/dates', dbg, dates.index);
   app.get('/dates/new', dbg, dates.new);
   app.post('/dates', dbg, dates.create);
@@ -44,6 +46,7 @@ function load(app, fn){
   app.delete('/dates/:id', dbg, dates.destroy);
   app.get('/dates/:id/edit', dbg, dates.edit);
   app.put('/dates/:id', dbg, dates.update);
+
 
   app.post('/locations', dbg, locations.create);
 

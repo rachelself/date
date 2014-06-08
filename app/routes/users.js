@@ -18,6 +18,10 @@ exports.index = (req, res)=>{
   }
 };
 
+exports.search = (req, res)=>{
+
+};
+
 exports.create = (req, res)=>{
   User.create(req.body, u=>{
     res.locals.user = u;

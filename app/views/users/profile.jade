@@ -9,20 +9,21 @@ block content
     if(profile)
       section.bio
         img.badge
+        form.add-interest-button(method='post', action='/users/suitors')
+          input(type='hidden', name='userId', value=profile._id)
+          button Interested
         .image-box
           if(profile.photos.length)
             each photo,i in profile.photos
               if(photo.isPrimary)
                 img(src=photo.path)
+                .blurb= photo.blurb
           else
             img(src='/img/#{profile.gender}.png')
-          form(method='post', action='/users/suitors')
-            input(type='hidden', name='userId', value=profile._id)
-            button Interested
 
-          span.name= profile.firstName
         .stats
           ul
+            li= profile.firstName
             li= profile.location
             li= profile.gender
             li= profile.age
@@ -51,11 +52,12 @@ block content
             each photo,i in user.photos
               if(photo.isPrimary)
                 img(src=photo.path)
+                .blurb= photo.blurb
           else
             img(src='/img/#{user.gender}.png')
-          span.name= user.firstName
         .stats
           ul
+            li= user.firstName
             li= user.location
             li= user.gender
             li= user.age

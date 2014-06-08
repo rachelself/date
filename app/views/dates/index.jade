@@ -7,48 +7,105 @@ block content
     header.header
       include ../shared/nav
 
+    section.dates-box
+
+      section.confirmed-dates-box
+        h3 Confirmed Dates
+        .date-item
+          .image-box
+            img(src='/img/old-lady.jpg')
+          .place-name Applebee's
+          .time-box
+            .weekday Wednesday
+            .digit-time 7:00
+
+      section.proposed-dates-box
+        h3 Proposed Dates
+        .date-item
+          .image-box
+            img(src='/img/old-lady.jpg')
+          .place-name Applebee's
+          .time-box
+            .weekday Wednesday
+            .digit-time 7:00
+          button View
+
     section.interested-box
       h3 Interested
-      .interested-person
-        .image-box
-           img(src='/img/old-lady.jpg')
-        .name user.name
-        .profile-link-box
-          a.profile-link(href='Link goes here') see profile
-        .remove-interest-box X
+      .interested-box__inner
+        .interested-person
+          .image-box
+             img(src='/img/old-lady.jpg')
+          .name user.name
+          .profile-link-box
+            a.profile-link(href='Link goes here') profile
+          .remove-interest-box X
+        .interested-person
+          .image-box
+             img(src='/img/old-lady.jpg')
+          .name user.name
+          .profile-link-box
+            a.profile-link(href='Link goes here') profile
+          .remove-interest-box X
+        .interested-person
+          .image-box
+             img(src='/img/old-lady.jpg')
+          .name user.name
+          .profile-link-box
+            a.profile-link(href='Link goes here') profile
+          .remove-interest-box X
 
     section.mutual-box
       h3 Mutual
-      .mutual-person
-        .person-name Name
-        .image-box
-          img(src='/img/person4.jpg')
-        a.profile-link(href='') Link
-      .mutual-person Name
-        .person-name
-        .image-box
-          img(src='/img/person5.jpg')
-        a.profile-link(href='') Link
-      .mutual-person
-        .person-name Name
-        .image-box
-          img(src='/img/person6.jpg')
-        a.profile-link(href='') Link
+      .mutual-box__inner
+        .mutual-box__another-inner
+          //- .arrow.arrow-left arrow
+          .mutual-person
+            .person-name Name
+            .image-box
+              img(src='/img/old-lady.jpg')
+            .profile-link-box
+              a.profile-link(href='') Profile
+            .button-box
+              button#invite-mutual-person Propose Date
+              button#invite-contact-person Propose Contact
+          .mutual-person
+            .person-name Name
+            .image-box
+              img(src='/img/old-lady.jpg')
+            .profile-link-box
+              a.profile-link(href='') Profile
+            .button-box
+              button#invite-mutual-person Propose Date
+              button#invite-contact-person Propose Contact
+          .mutual-person
+            .person-name Name
+            .image-box
+              img(src='/img/old-lady.jpg')
+            .profile-link-box
+              a.profile-link(href='') Profile
+            .button-box
+              button#invite-mutual-person Propose Date
+              button#invite-contact-person Propose Contact
+          //- .arrow.arrow-right arrow
 
-      .button-box
-        button#invite-mutual-person
-        button#invite-contact-person
+        //- .button-box
+        //-   button#invite-mutual-person Propose Date
+        //-   button#invite-contact-person Propose Contact
 
-    section.dates-box
-      h3 Dates
-      .date-item
-        .image-box
-          img(src='/img/location1.jpg')
-        .place-name Applebee's
-        .time
-          .weekday Wednesday
-          .digit-time 7:00
-        li something?
 
     section.blocked-box
-      h5 Blocked Users
+      h5 Blocked
+      ul
+        li Lorem ipsum.
+        li Lorem ipsum.
+        li Lorem ipsum.
+        li Lorem ipsum.
+        li Lorem ipsum.
+        li Lorem ipsum.
+        li Lorem ipsum.
+        li Lorem ipsum.
+        li Lorem ipsum.
+        li Lorem ipsum.
+        li Lorem ipsum.
+        li Lorem ipsum.
