@@ -755,315 +755,315 @@ html {
 // From hereon, feel free to delete anything. The rest is just examples.
 // Also look up "Color Operation Functions" and "Color Blending Functions": ( http://lesscss.org/functions/#color-operations )
 
-header {
-  &:extend(.clearfix:before, .clearfix:after);
-  height: @lh * 4;
-  margin-bottom: @lh; // example of vertical-rhythm
-  width: 100%;
-  > h1 {
-    display: block;
-    float: left;
-    text-align: center;
-    width: 30%;
-  }
-  > nav {
-    float: right;
-    padding: @lh * 1;
-    text-align: center;
-    width: 70%;
-    > ul {
-      float: right;
-    }
-    > ul > li {
-      display: inline-block;
-      padding: @lh / 2;
-      text-align: center;
-      > a {
-        display: block;
-        height: 100%;
-        width: 100%;
-        &:hover {
-          text-shadow: 2px 2px 11px #fffcf0;
-          color: #74022d;
-          transition: color 300ms ease;
-        }
-      }
-    }
-  }
-}
-
-.container__home {
-  height: 100%;
-  min-height: 100%;
-  > .top-section {
-    background-image: url(/img/couple4.jpg);
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    min-height: 100%;
-    > .top-section-text {
-      align-self: center;
-      background: fadeOut(#fffcf0, 33deg);
-      // margin-bottom: @lh * 1;
-      padding: @lh * 2;
-      text-align: center;
-      > .teaser-text--big {
-        font-size: @fs * 1.4;
-        margin-bottom: @lh * 3;
-      }
-      > .teaser-text--tagline {
-        margin-bottom: @lh;
-      }
-    }
-  }
-  > .features {
-    // &:extend(.clearfix:before, .clearfix:after);
-    align-items: center;
-    background: #f8ae59;
-    display: flex;
-    min-height: 50vh;
-    padding: @lh;
-    width: 100%;
-    > .img-wrapper {
-      border: 1px solid black;
-      float: left;
-      padding-right: @lh;
-      width: 50%;
-      > img {
-        max-width: 100%;
-        text-align: center;
-      }
-    }
-    > .features-list {
-      border: 1px solid red;
-      display: table;
-      padding: @lh * 4;
-      vertical-align: middle;
-      width: 50%;
-      > h2 {
-        margin-bottom: @lh;
-      }
-      > ul {
-        vertical-align: middle;
-        > li {
-          margin-bottom: @lh / 2;
-        }
-      }
-    }
-  }
-  > .sign-up {
-    align-items: center;
-    background-image: url(/img/couple.jpg);
-    background-size: 100%;
-    background-repeat: none;
-    display: flex;
-    justify-content: center;
-    min-height: 60vh;
-    > .sign-up__inner {
-      > h2 {
-        display: block;
-        margin-bottom: @lh / 2;
-      }
-      > form {
-        > input {
-          border: 1px solid #ccc;
-          display: block;
-          margin-bottom: @lh / 2;
-          padding: @lh / 4;
-          text-align: right;
-          min-width: 60%;
-        }
-        > button {
-          height: @lh * 1.5;
-          line-height: @lh * 1.5;
-          padding-left: @lh / 2;
-          padding-right: @lh / 2;
-        }
-      }
-    }
-  }
-}
-
-.container__profile {
-  > .bio {
-    // border: 1px solid black;
-    display: flex;
-    margin: 0 auto (@lh) auto;
-    // max-width: @lh * 33;
-    position: relative;
-    width: 91%;
-    > .badge {
-      position: absolute;
-      top: -(@lh);
-      right: 0;
-    }
-    > .image-box {
-      align-items: center;
-      // background: #ccc;
-      // border: 1px solid #ccc;
-      background: ivory;
-      display: flex;
-      flex-direction: column;
-      padding: @lh / 2;
-      position: relative;
-      text-align: center;
-      width: 25%;
-      > img {
-        align-self: center;
-        max-width: @lh * 6;
-      }
-      > .name {
-        bottom: -(@lh);
-        color: #ccc;
-        left: 0;
-        position: absolute;
-        right: 0;
-        text-align: center;
-        width: 100%;
-      }
-    }
-    > .stats {
-      align-self: flex-end;
-      padding: @lh;
-      width: 15%;
-      ul {
-        list-style: none;
-        li {
-          font-size: @fs * .65;
-          margin-bottom: @lh / 3;
-          &:last-of-type {
-            margin-bottom: 0;
-          }
-        }
-      }
-    }
-    > .inner-bio-box {
-      align-self: center;
-      // border: 1px solid red;
-      -webkit-column-count: 2;
-      -moz-column-count: 2;
-      -moz-column-rule-color:  #ccc;
-      -moz-column-rule-style:  solid;
-      -moz-column-rule-width:  1px;
-      padding: @lh;
-      text-align: justify;
-      width: 85%;
-      .bio-text {
-        font-size: @fs * .7;
-        padding: @lh / 4;
-        &:first-letter {
-          margin-left: @lh / 2;
-        }
-      }
-    }
-  }
-  > .interests-values-box {
-    display: flex;
-    margin: 0 auto;
-    width: 81%;
-    > .interests-box, .values-box {
-      // border: 1px solid green;
-      width: 50%;
-      h3 {
-        font-size: @fs;
-        padding: @lh * 3;
-      }
-      > p,
-      > ul > li {
-        font-size: @fs * .7;
-      }
-    }
-    // > .interests-box {
-    //   align-items: center;
-    //   display: flex;
-    //   justify-content: center;
-    //   p {
-    //     max-width: @lh * 16;
-    //   }
-    // }
-    > .interests-box,
-    > .values-box {
-      display: flex;
-      justify-content: center;
-      > ul {
-        align-self: center;
-        > li {
-          margin-bottom: @lh / 4;
-        }
-      }
-    }
-  }
-}
-
-.container__dates {
-
-  > .interested-box,
-  > .mutual-box,
-  > .dates-box {
-    border: 1px solid black;
-    margin: 0 auto @lh;
-    width: 81%;
-    h3 {
-      background: #ccc;
-      display: block;
-      height: @lh * 2;
-      font-size: @fs * 1.1;
-      line-height: @lh * 2.25;
-      padding-left: @lh;
-      // padding: (@lh / 2) 0 (@lh / 2) @lh;
-    }
-  }
-  > .interested-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    > .interested-person {
-      align-items: center;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      border: 1px solid #ccc;
-      margin: 0 auto;
-      padding: @lh;
-      width: 81%;
-      > .image-box {
-        align-items: center;
-        border: 1px solid #ccc;
-        display: flex;
-        flex-direction: column;
-        width: 25%;
-        > img {
-          max-width: @lh * 5;
-        }
-      }
-      > .name {
-        border: 1px solid #ccc;
-        text-align: center;
-        width: 25%;
-      }
-      > .profile-link-box {
-        border: 1px solid #ccc;
-        max-width: 25%;
-      }
-      > .remove-interest-box {
-        border: 1px solid #ccc;
-        max-width: 25%;
-      }
-    }
-  }
-  > .mutual-box {
-    > .mutual-person {
-      padding: @lh;
-      > .image-box {
-        max-width: @lh * 5;
-        > img {
-          max-width: @lh * 5;
-        }
-      }
-    }
-  }
-
+// header {
+//   &:extend(.clearfix:before, .clearfix:after);
+//   height: @lh * 4;
+//   margin-bottom: @lh; // example of vertical-rhythm
+//   width: 100%;
+//   > h1 {
+//     display: block;
+//     float: left;
+//     text-align: center;
+//     width: 30%;
+//   }
+//   > nav {
+//     float: right;
+//     padding: @lh * 1;
+//     text-align: center;
+//     width: 70%;
+//     > ul {
+//       float: right;
+//     }
+//     > ul > li {
+//       display: inline-block;
+//       padding: @lh / 2;
+//       text-align: center;
+//       > a {
+//         display: block;
+//         height: 100%;
+//         width: 100%;
+//         &:hover {
+//           text-shadow: 2px 2px 11px #fffcf0;
+//           color: #74022d;
+//           transition: color 300ms ease;
+//         }
+//       }
+//     }
+//   }
+// }
+//
+// .container__home {
+//   height: 100%;
+//   min-height: 100%;
+//   > .top-section {
+//     background-image: url(/img/couple4.jpg);
+//     background-size: cover;
+//     display: flex;
+//     flex-direction: column;
+//     height: 100%;
+//     min-height: 100%;
+//     > .top-section-text {
+//       align-self: center;
+//       background: fadeOut(#fffcf0, 33deg);
+//       // margin-bottom: @lh * 1;
+//       padding: @lh * 2;
+//       text-align: center;
+//       > .teaser-text--big {
+//         font-size: @fs * 1.4;
+//         margin-bottom: @lh * 3;
+//       }
+//       > .teaser-text--tagline {
+//         margin-bottom: @lh;
+//       }
+//     }
+//   }
+//   > .features {
+//     // &:extend(.clearfix:before, .clearfix:after);
+//     align-items: center;
+//     background: #f8ae59;
+//     display: flex;
+//     min-height: 50vh;
+//     padding: @lh;
+//     width: 100%;
+//     > .img-wrapper {
+//       border: 1px solid black;
+//       float: left;
+//       padding-right: @lh;
+//       width: 50%;
+//       > img {
+//         max-width: 100%;
+//         text-align: center;
+//       }
+//     }
+//     > .features-list {
+//       border: 1px solid red;
+//       display: table;
+//       padding: @lh * 4;
+//       vertical-align: middle;
+//       width: 50%;
+//       > h2 {
+//         margin-bottom: @lh;
+//       }
+//       > ul {
+//         vertical-align: middle;
+//         > li {
+//           margin-bottom: @lh / 2;
+//         }
+//       }
+//     }
+//   }
+//   > .sign-up {
+//     align-items: center;
+//     background-image: url(/img/couple.jpg);
+//     background-size: 100%;
+//     background-repeat: none;
+//     display: flex;
+//     justify-content: center;
+//     min-height: 60vh;
+//     > .sign-up__inner {
+//       > h2 {
+//         display: block;
+//         margin-bottom: @lh / 2;
+//       }
+//       > form {
+//         > input {
+//           border: 1px solid #ccc;
+//           display: block;
+//           margin-bottom: @lh / 2;
+//           padding: @lh / 4;
+//           text-align: right;
+//           min-width: 60%;
+//         }
+//         > button {
+//           height: @lh * 1.5;
+//           line-height: @lh * 1.5;
+//           padding-left: @lh / 2;
+//           padding-right: @lh / 2;
+//         }
+//       }
+//     }
+//   }
+// }
+//
+// .container__profile {
+//   > .bio {
+//     // border: 1px solid black;
+//     display: flex;
+//     margin: 0 auto (@lh) auto;
+//     // max-width: @lh * 33;
+//     position: relative;
+//     width: 91%;
+//     > .badge {
+//       position: absolute;
+//       top: -(@lh);
+//       right: 0;
+//     }
+//     > .image-box {
+//       align-items: center;
+//       // background: #ccc;
+//       // border: 1px solid #ccc;
+//       background: ivory;
+//       display: flex;
+//       flex-direction: column;
+//       padding: @lh / 2;
+//       position: relative;
+//       text-align: center;
+//       width: 25%;
+//       > img {
+//         align-self: center;
+//         max-width: @lh * 6;
+//       }
+//       > .name {
+//         bottom: -(@lh);
+//         color: #ccc;
+//         left: 0;
+//         position: absolute;
+//         right: 0;
+//         text-align: center;
+//         width: 100%;
+//       }
+//     }
+//     > .stats {
+//       align-self: flex-end;
+//       padding: @lh;
+//       width: 15%;
+//       ul {
+//         list-style: none;
+//         li {
+//           font-size: @fs * .65;
+//           margin-bottom: @lh / 3;
+//           &:last-of-type {
+//             margin-bottom: 0;
+//           }
+//         }
+//       }
+//     }
+//     > .inner-bio-box {
+//       align-self: center;
+//       // border: 1px solid red;
+//       -webkit-column-count: 2;
+//       -moz-column-count: 2;
+//       -moz-column-rule-color:  #ccc;
+//       -moz-column-rule-style:  solid;
+//       -moz-column-rule-width:  1px;
+//       padding: @lh;
+//       text-align: justify;
+//       width: 85%;
+//       .bio-text {
+//         font-size: @fs * .7;
+//         padding: @lh / 4;
+//         &:first-letter {
+//           margin-left: @lh / 2;
+//         }
+//       }
+//     }
+//   }
+//   > .interests-values-box {
+//     display: flex;
+//     margin: 0 auto;
+//     width: 81%;
+//     > .interests-box, .values-box {
+//       // border: 1px solid green;
+//       width: 50%;
+//       h3 {
+//         font-size: @fs;
+//         padding: @lh * 3;
+//       }
+//       > p,
+//       > ul > li {
+//         font-size: @fs * .7;
+//       }
+//     }
+//     // > .interests-box {
+//     //   align-items: center;
+//     //   display: flex;
+//     //   justify-content: center;
+//     //   p {
+//     //     max-width: @lh * 16;
+//     //   }
+//     // }
+//     > .interests-box,
+//     > .values-box {
+//       display: flex;
+//       justify-content: center;
+//       > ul {
+//         align-self: center;
+//         > li {
+//           margin-bottom: @lh / 4;
+//         }
+//       }
+//     }
+//   }
+// }
+//
+// .container__dates {
+//
+//   > .interested-box,
+//   > .mutual-box,
+//   > .dates-box {
+//     border: 1px solid black;
+//     margin: 0 auto @lh;
+//     width: 81%;
+//     h3 {
+//       background: #ccc;
+//       display: block;
+//       height: @lh * 2;
+//       font-size: @fs * 1.1;
+//       line-height: @lh * 2.25;
+//       padding-left: @lh;
+//       // padding: (@lh / 2) 0 (@lh / 2) @lh;
+//     }
+//   }
+//   > .interested-box {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     > .interested-person {
+//       align-items: center;
+//       display: flex;
+//       flex-direction: row;
+//       justify-content: center;
+//       border: 1px solid #ccc;
+//       margin: 0 auto;
+//       padding: @lh;
+//       width: 81%;
+//       > .image-box {
+//         align-items: center;
+//         border: 1px solid #ccc;
+//         display: flex;
+//         flex-direction: column;
+//         width: 25%;
+//         > img {
+//           max-width: @lh * 5;
+//         }
+//       }
+//       > .name {
+//         border: 1px solid #ccc;
+//         text-align: center;
+//         width: 25%;
+//       }
+//       > .profile-link-box {
+//         border: 1px solid #ccc;
+//         max-width: 25%;
+//       }
+//       > .remove-interest-box {
+//         border: 1px solid #ccc;
+//         max-width: 25%;
+//       }
+//     }
+//   }
+//   > .mutual-box {
+//     > .mutual-person {
+//       padding: @lh;
+//       > .image-box {
+//         max-width: @lh * 5;
+//         > img {
+//           max-width: @lh * 5;
+//         }
+//       }
+//     }
+//   }
+//
 #map{
   width: 800px;
   height: 600px;

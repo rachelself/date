@@ -2,6 +2,11 @@
 /* jshint unused:false */
 /* jshint camelcase:false */
 
+function ajax(url, verb, data={}, success=r=>console.log(r), dataType='html'){//defaulting to html
+    'use strict';
+  $.ajax({url:url, type:verb, dataType:dataType, data:data, success:success});
+}
+
 (function(){
   'use strict';
 
@@ -13,6 +18,36 @@
     $('#search').click(clearListing);
     $('#search').click(getLocations);
     $('#map').on('click', '.directions', getDirections);
+    $('#searchListing').on('click', '.dateLocation', chooseDateLocation);
+  }
+
+  function chooseDateLocation() {
+    var obj = {};
+    obj.rating = $(this).attr('data-rating');
+    obj.lat = $(this).attr('data-lat');
+    obj.lng = $(this).attr('data-lng');
+    obj.url = $('.dateLocation').prev().attr('href');
+    obj.address1 = $(this).attr('data-address1');
+    obj.city = $(this).attr('data-city');
+    obj.state = $(this).attr('data-state');
+    obj.zip = $(this).attr('data-zip');
+    obj.ratingImg = $(this).attr('data-ratingImg');
+    obj.name = $(this).attr('data-name');
+
+    // ajax('/locations', 'POST', obj, jsonObj=>{
+    //   console.log(jsonObj);
+      $('#searchListing').empty();
+      $('#cityOrZip').hide();
+      $('#companyName').hide();
+      $('#search').hide();
+      var confirmDate = $('<button id="confirmDate">').text('Okay, I am ready. Send!');
+      var editDate = $('<button id="editDate">').text('Wait! I need to change something');
+      $('#controls').append(confirmDate).append(editDate);
+      createSearchListing(obj);
+      end = new google.maps.LatLng(obj.lat, obj.lng);
+      initialize(obj.lat, obj.lng);
+
+    // }, 'json');
   }
 
 
@@ -88,7 +123,8 @@
               <p>${listing.city}, ${listing.state} ${listing.zip}</p>
               <p>${listing.phone}</p>
               <a href='${listing.url}'>View on Yelp</a>
-              <button class='dateLocation', data-rating='${listing.rating}', data-lat='${listing.lat}', data-lng='${listing.lng}'>This is it!</button>
+              <button class='dateLocation', data-name='${listing.name}', data-address1='${listing.address1}', data-city='${listing.city}', data-state='${listing.state}', data-zip='${listing.zip}',
+              data-ratingImg='${listing.ratingImg}', data-rating='${listing.rating}', data-lat='${listing.lat}', data-lng='${listing.lng}'>This is it!</button>
               </div>`;
     $('#searchListing').append(div);
   }
@@ -162,7 +198,6 @@
     var destLat = $(this).attr('data-lat');
     var destLng = $(this).attr('data-lng');
     end = new google.maps.LatLng(destLat, destLng);
-    console.log(end);
 
     initialize(destLat, destLng);
   }

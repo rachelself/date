@@ -17,6 +17,7 @@ function load(app, fn){
   var home = traceur.require(__dirname + '/../routes/home.js');
   var users = traceur.require(__dirname + '/../routes/users.js');
   var dates = traceur.require(__dirname + '/../routes/dates.js');
+  var locations = traceur.require(__dirname + '/../routes/locations.js');
 
   app.all('*', users.lookup);
 
@@ -41,6 +42,8 @@ function load(app, fn){
   app.delete('/dates/:id', dbg, dates.destroy);
   app.get('/dates/:id/edit', dbg, dates.edit);
   app.put('/dates/:id', dbg, dates.modify);
+
+  app.post('/locations', dbg, locations.create);
 
   console.log('Routes Loaded');
   fn();
