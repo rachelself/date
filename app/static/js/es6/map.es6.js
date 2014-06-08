@@ -10,6 +10,7 @@
   function init() {
     initMap(36.17, -86.778, 13);
     geoLocate();
+    $('#search').click(clearListing);
     $('#search').click(getLocations);
     $('#map').on('click', '.directions', getDirections);
   }
@@ -37,14 +38,14 @@
 
   /* Yelp API request */
 
-  function getLocations(event) {
-    console.log('---------JSON-----------');
+  function getLocations() {
     let term = $('#companyName').val().trim();
     let cityOrZip = $('#cityOrZip').val().trim().replace(/[,]+[, ]/g, '+').replace(/ /g, '+');
     let url = 'http://api.yelp.com/business_review_search?term='+ term +'&location='+ cityOrZip +'&limit=8&ywsid=x0GtqSl0Gm8wp0_8A7L2fw&callback=?';
     console.log(url);
     $.getJSON(url, addRestaurantsToMap);
-    event.preventDefault();
+    $('#cityOrZip').val('');
+    $('#companyName').val('');
   }
 
   function addRestaurantsToMap(data) {
@@ -92,6 +93,10 @@
     $('#searchListing').append(div);
   }
 
+  function clearListing(){
+    $('#searchListing').empty();
+  }
+
   function geoCode(zip) {
     let geocoder = new google.maps.Geocoder();
 
@@ -119,6 +124,7 @@
     var infowindow = new google.maps.InfoWindow({
       content: contentString
     });
+
     var marker = new google.maps.Marker({map: map, position: latLng, title: name, info:info});
     google.maps.event.addListener(marker, 'click', function(){
       infowindow.open(map,marker);
@@ -180,8 +186,6 @@
       destination: end,
       travelMode: google.maps.TravelMode.DRIVING
     };
-    console.log('-----------END---------');
-    console.log(request.destination);
     directionsService.route(request, function(response, status) {
       if (status === google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(response);
