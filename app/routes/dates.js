@@ -9,7 +9,7 @@
 // app.put('/dates/:id', dbg, dates.modify);
 
 exports.new = (req, res)=>{
-
+  res.render('dates/new');
 };
 
 exports.create = (req, res)=>{
