@@ -82,7 +82,20 @@ exports.addPhotos = (req, res)=>{
 };
 
 exports.updatePhotos = (req, res)=>{
+  var user = res.locals.user;
+  user.updatePhotos(req.body);
+  user.save(()=>{
+    res.redirect('/users/editProfile');
+  });
+};
 
+exports.suitors = (req, res)=>{
+  User.findById(req.body.userId, u=>{
+    u.addSuitor(req.session.userId);
+    u.save(()=>{
+      res.redirect(`/users/${req.body.userId}`);
+    });
+  });
 };
 
 exports.search = (req, res)=>{
