@@ -81,6 +81,10 @@ exports.addPhotos = (req, res)=>{
   });
 };
 
+exports.updatePhotos = (req, res)=>{
+
+};
+
 exports.search = (req, res)=>{
   User.findAll(records=>{
     res.render('users/search', {users: records});

@@ -16,7 +16,7 @@ block content
             if(user.photos.length)
               each photo,i in user.photos
                 if(photo.isPrimary)
-                  img(src=photo[i].path)
+                  img(src=photo.path)
             else
               img(src='/img/#{user.gender}.png')
             span.name= user.firstName
