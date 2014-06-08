@@ -18,26 +18,26 @@ block content
             img(src='/img/#{profile.gender}.png')
 
           span.name= profile.firstName
-        .inner-bio-box
-          h3 Bio
-          p.bio
         .stats
           ul
             li= profile.location
             li= profile.gender
             li= profile.age
+        .inner-bio-box
+          h3 Bio
+          p.bio-text= profile.bio
 
       section.interests-values-box
         .interests-box
           h3 Interests
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas amet iure ad ipsa. Numquam quam ea ullam ipsam, accusantium officia unde vero temporibus neque quos, iusto nobis assumenda quaerat illo dicta iste eaque.
+          ul
+           each interest in profile.interests
+             li= interest
         .values-box
           h3 Values
           ul
-           li Lorem ipsum.
-           li Lorem ipsum dolor.
-           li Lorem ipsum.
-           li Lorem.
+            each value in profile.values
+              li= value
 
     else
       button
@@ -52,27 +52,23 @@ block content
           else
             img(src='/img/#{user.gender}.png')
           span.name= user.firstName
-        .inner-bio-box
-          h3 Bio
-
-          p.bio Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas amet iure ad ipsa. Numquam quam ea ullam ipsam, accusantium officia unde vero temporibus neque quos, iusto nobis assumenda quaerat illo dicta iste eaque.
         .stats
           ul
             li= user.location
             li= user.gender
             li= user.age
-
+        .inner-bio-box
+          h3 Bio
+          p.bio-text= user.bio
 
       section.interests-values-box
         .interests-box
           h3 Interests
-
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas amet iure ad ipsa. Numquam quam ea ullam ipsam, accusantium officia unde vero temporibus neque quos, iusto nobis assumenda quaerat illo dicta iste eaque.
+          ul
+           each interest in user.interests
+             li= interest
         .values-box
           h3 Values
-
           ul
-           li Lorem ipsum.
-           li Lorem ipsum dolor.
-           li Lorem ipsum.
-           li Lorem.
+            each value in user.values
+              li= value

@@ -6,48 +6,44 @@ block content
 
     header.header
       include ../shared/nav
-
-      button
-        a(href='/users/update') Save Profile
-      section.bio
-        img.badge
-        .image-box
-          button
-            a(href='/users/editPhotos') Manage Photos
-          if(user.photos.length)
-            each photo,i in user.photos
-              if(photo.isPrimary)
-                img(src=photo[i].path)
-          else
-            img(src='/img/#{user.gender}.png')
-          span.name= user.firstName
-        .inner-bio-box
-          h3 Bio
-          p.bio
-            textarea(name='bio')= user.bio
-        .stats
-          ul
-            li Zip Code:
-              input(type='text', name='location', placeholder=user.location)
-            li Gender:
-              select(name='gender')
-                option Choose A Gender
-                option Male
-                option Female
-            li Age
-              input(type='number', name='age', placeholder=user.age)
+      form(method='POST', action='/users/update')
+        button Save Profile
+        section.bio
+          img.badge
+          .image-box
+            button
+              a(href='/users/editPhotos') Manage Photos
+            if(user.photos.length)
+              each photo,i in user.photos
+                if(photo.isPrimary)
+                  img(src=photo[i].path)
+            else
+              img(src='/img/#{user.gender}.png')
+            span.name= user.firstName
+          .stats
+            ul
+              li Zip Code:
+                input(type='text', name='location', value=user.location)
+              li Gender:
+                span= user.gender
+              li Age:
+                span= user.age
+          .inner-bio-box
+            h3 Bio
+            p.bio.text
+              textarea(name='bio')= user.bio
 
 
-      section.interests-values-box
-        .interests-box
-          h3 Interests
-
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas amet iure ad ipsa. Numquam quam ea ullam ipsam, accusantium officia unde vero temporibus neque quos, iusto nobis assumenda quaerat illo dicta iste eaque.
-        .values-box
-          h3 Values
-
-          ul
-           li Lorem ipsum.
-           li Lorem ipsum dolor.
-           li Lorem ipsum.
-           li Lorem.
+        section.interests-values-box
+          .interests-box
+            h3 Interests
+            ul
+             each interest in user.interests
+               li
+                 input(type='text', name='interests', value=interest)
+          .values-box
+            h3 Values
+              ul
+                each value in user.values
+                  li
+                    input(type='text', name='values', value=value)

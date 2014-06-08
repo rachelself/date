@@ -48,6 +48,14 @@ exports.edit = (req, res)=>{
   res.render('users/editProfile');
 };
 
+exports.update = (req, res)=>{
+  var user = res.locals.user;
+  user.update(req.body);
+  user.save(()=>{
+    res.redirect(`/users/${req.session.userId}`);
+  });
+};
+
 exports.dates = (req, res)=>{
   Meeting.findByInviteeId(req.session.userId, inviteeDates=>{
     Meeting.findByCreatorId(req.session.userId, creatorDates=>{

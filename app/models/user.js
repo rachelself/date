@@ -12,6 +12,13 @@ class User {
     users.save(this, ()=>fn());
   }
 
+  update(obj){
+    this.location = obj.location;
+    this.interests = obj.interests;
+    this.values = obj.values;
+    this.bio = obj.bio;
+  }
+
   static create(obj, fn){
     users.findOne({email:obj.email}, (err,user)=>{
       if(user) {
