@@ -1029,45 +1029,52 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    > .interested-person {
+    > .interested-box__inner {
       align-items: center;
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       justify-content: center;
-      border: 1px solid #ccc;
-      margin: 0 auto;
-      max-width: @lh * 30;
-      padding: @lh / 2;
-      width: 81%;
-      > .image-box {
+      > .interested-person {
         align-items: center;
-        border: 1px solid #ccc;
         display: flex;
-        flex-direction: column;
-        width: 25%;
-        > img {
-          max-width: @lh * 2.75;
-        }
-      }
-      > .name {
-        border: 1px solid #ccc;
-        font-size: @fs * .73;
-        text-align: center;
-        width: 35%;
-      }
-      > .profile-link-box {
-        border: 1px solid #ccc;
-        font-size: @fs * .73;
-        text-align: center;
-        width: 15%;
-      }
-      > .remove-interest-box {
-        align-items: center;
-        border: 1px solid #ccc;
-        display: flex;
-        height: @lh * 2;
+        flex-direction: row;
         justify-content: center;
-        width: @lh * 2;
+        border: 1px solid #ccc;
+        margin: 0 auto;
+        max-width: @lh * 30;
+        padding: @lh / 2;
+        width: 50%;
+        > .image-box {
+          align-items: center;
+          border: 1px solid #ccc;
+          display: flex;
+          flex-direction: column;
+          width: 25%;
+          > img {
+            max-width: @lh * 2.75;
+          }
+        }
+        > .name {
+          border: 1px solid #ccc;
+          font-size: @fs * .73;
+          text-align: center;
+          width: 35%;
+        }
+        > .profile-link-box {
+          border: 1px solid #ccc;
+          font-size: @fs * .73;
+          text-align: center;
+          width: 15%;
+        }
+        > .remove-interest-box {
+          align-items: center;
+          border: 1px solid #ccc;
+          display: flex;
+          height: @lh * 2;
+          justify-content: center;
+          width: @lh * 2;
+        }
       }
     }
   }
@@ -1075,7 +1082,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
+    // position: relative;
     // min-height: 55vh;
     > .mutual-box__inner {
       align-items: center;
@@ -1128,77 +1135,205 @@ header {
             text-align: center;
             // width: @lh * 5;
           }
-        }
-      }
-      > .button-box {
-        display: flex;
-        position: absolute;
-        bottom: -@lh / 1.5;
-        justify-content: center;
-        left: 0;
-        right: 0;
-        width: 100%;
-        > button {
-          background: @pomegranate;
-          border: 1px solid white;
-          height: @lh * 1.3;
-          justify-self: center;
-          width: @lh * 4;
-          &:nth-of-type(1) {
-            margin-right: @lh * 1.5;
-          }
-          &:nth-of-type(2) {
-            margin-left: @lh * 1.5;
+          > .button-box {
+            font-size: @fs * .67;
+            padding-top: @lh / 2;
+            > button {
+              padding: @lh / 8;
+              &:nth-of-type(1) {
+                margin-bottom: @lh / 4;
+              }
+            }
           }
         }
       }
+      // > .button-box {
+      //   display: flex;
+      //   position: absolute;
+      //   bottom: -@lh / 1.5;
+      //   justify-content: center;
+      //   left: 0;
+      //   right: 0;
+      //   width: 100%;
+      //   > button {
+      //     background: @pomegranate;
+      //     border: 1px solid white;
+      //     height: @lh * 1.3;
+      //     justify-self: center;
+      //     width: @lh * 4;
+      //     &:nth-of-type(1) {
+      //       margin-right: @lh * 1.5;
+      //     }
+      //     &:nth-of-type(2) {
+      //       margin-left: @lh * 1.5;
+      //     }
+      //   }
+      // }
     }
   }
   > .dates-box {
-    > .date-item {
+    align-items: flex-start;
+    display: flex;
+    justify-content: center;
+    width: 91%;
+    > .confirmed-dates-box,
+    > .proposed-dates-box {
       align-items: center;
+      border: 1px solid purple;
       display: flex;
-      flex-direction: row;
-      justify-content: center;
-      padding: @lh / 2;
-      > .image-box {
-        align-items: center;
-        border: 1px solid #ccc;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: @lh / 4;
-        width: 40%;
-        > img {
-          max-width: @lh * 8;
-        }
-      }
-      > .place-name {
-        align-self: center;
-        border: 1px solid #ccc;
-        text-align: center;
-        width: 20%;
-      }
-      > .time-box {
-        align-self: center;
-        border: 3px solid @black;
-        border-radius: 4px;
+      flex-direction: column;
+      flex: 1;
+      > h3 {
         font-size: @fs * .8;
-        padding: @lh / 4;
-        text-align: center;
-        > .weekday {
-          border: 1px solid #ccc;
+      }
+      > .date-item {
+        align-items: center;
+        border: 1px solid red;
+        display: flex;
+        font-size: @fs * .7;
+        flex-direction: row;
+        max-width: @lh * 16;
+        width: 90%;
+        > .image-box {
+          align-items: center;
+          border: 1px solid green;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          max-width: @lh * 6;
+          > img {
+            max-width: @lh * 3;
+          }
         }
-        > .digit-time {
+        > .place-name {
           border: 1px solid #ccc;
+          padding: @lh / 2;
+        }
+        > .time-box {
+          align-self: center;
+          // border: 3px solid @black;
+          // border-radius: 5px;
+          padding: @lh / 2;
+          text-align: center;
         }
       }
-      > .something {
-        align-self: center;
-        border: 1px solid #ccc;
+    }
+    > .confirmed-dates-box {
+      > .date-item {
+        justify-content: space-around;
+      }
+    }
+    > .proposed-dates-box {
+      > .date-item {
+        justify-content: space-between;
+        > button {
+          padding: @lh / 4;
+        }
       }
     }
   }
+  // > .dates-box {
+  //   align-items: center;
+  //   display: flex;
+  //   flex-direction: column;
+  //   width: 91%;
+  //   > .confirmed-dates-box {
+  //     align-items: center;
+  //     display: flex;
+  //     flex-direction: column;
+  //     width: 50%;
+  //     > .date-item {
+  //       width: @lh * 10;
+  //       > .image-box {
+  //         align-items: center;
+  //         border: 1px solid #ccc;
+  //         display: flex;
+  //         flex-direction: column;
+  //         justify-content: center;
+  //         padding: @lh / 4;
+  //         width: 40%;
+  //         > img {
+  //           max-width: @lh * 8;
+  //         }
+  //       > .place-name {
+  //         border: 1px solid #ccc;
+  //       }
+  //       > .time-box {
+  //         align-self: center;
+  //         border: 1px solid #ccc;
+  //         text-align: center;
+  //         width: 20%;
+  //       }
+  //       > .something {
+  //         border: 1px solid #ccc;
+  //       }
+  //     }
+  //   }
+  //   > .proposed-dates-box {
+  //     border: 1px solid #ccc;
+  //     > .date-item {
+  //       border: 1px solid #ccc;
+  //       > .image-box {
+  //         border: 1px solid #ccc;
+  //       }
+  //       > .place-name {
+  //         border: 1px solid #ccc;
+  //       }
+  //       > .time-box {
+  //         border: 1px solid #ccc;
+  //       }
+  //       > .something {
+  //         align-self: center;
+  //         border: 1px solid #ccc;
+  //       }
+  //     }
+  //   }
+  // }
+  // > .dates-box {
+  //   > .date-item {
+  //     align-items: center;
+  //     display: flex;
+  //     flex-direction: row;
+  //     justify-content: center;
+  //     padding: @lh / 2;
+  //     > .image-box {
+  //       align-items: center;
+  //       border: 1px solid #ccc;
+  //       display: flex;
+  //       flex-direction: column;
+  //       justify-content: center;
+  //       padding: @lh / 4;
+  //       width: 40%;
+  //       > img {
+  //         max-width: @lh * 8;
+  //       }
+  //     }
+  //     > .place-name {
+  //       align-self: center;
+  //       border: 1px solid #ccc;
+  //       text-align: center;
+  //       width: 20%;
+  //     }
+  //     > .time-box {
+  //       align-self: center;
+  //       border: 3px solid @black;
+  //       border-radius: 4px;
+  //       font-size: @fs * .8;
+  //       padding: @lh / 4;
+  //       text-align: center;
+  //       > .weekday {
+  //         border: 1px solid #ccc;
+  //       }
+  //       > .digit-time {
+  //         border: 1px solid #ccc;
+  //       }
+  //     }
+  //     > .something {
+  //       align-self: center;
+  //       border: 1px solid #ccc;
+  //     }
+  //   }
+  // }
   > .blocked-box {
     align-items: center;
     border: 1px solid #ccc;
