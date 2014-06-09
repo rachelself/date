@@ -767,7 +767,7 @@ html {
   overflow-x: hidden; // prevents sideways scrolling.
 }
 
-.container {
+.container-box {
   margin-bottom: @lh * 2;
 }
 
@@ -1333,7 +1333,8 @@ header {
   > .top-section,
   > .form-box,
   > .controls
-  > .date-and-time {
+  > .date-and-time,
+  > .summary-box {
     margin-bottom: @lh;
   }
   > .top-section {
@@ -1402,7 +1403,7 @@ header {
     }
   }
   > .map-box {
-    margin: 0 auto;
+    margin: 0 auto @lh;
     text-align: center;
     > h1 {
       display: block;
@@ -1412,6 +1413,33 @@ header {
     }
     > .map {
       margin: 0 auto;
+    }
+  }
+  > .summary-box {
+    border: 1px solid #ccc;
+    display: block;
+    margin: 0 auto @lh;
+    width: 61%;
+    > h3 {
+      display: inline-block;
+      font-size: @fs * 1.2;
+      margin-right: @lh / 2;
+    }
+    > p {
+      display: inline-block;
+      font-size: @fs * .9;
+    }
+  }
+  > .button-box {
+    margin: 0 auto @lh;
+    text-align: center;
+    width: 61%;
+    > button {
+      font-size: @fs * .9;
+      padding: @lh / 2;
+      &:nth-of-type(1) {
+        margin-right: @lh;
+      }
     }
   }
 

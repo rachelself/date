@@ -16,7 +16,6 @@ block content
       .form-box__inner
 
         #dateAndTime.date-and-time
-          //- p <em>When are you available?</em>
           textarea.form-control#availability(type='textarea', placeholder='So does next week work better for you?')
           input.form-control#date(type='date' placeholder='07/11/2015')
           input.form-control#time(type='time' placeholder='8:00pm')
@@ -35,7 +34,13 @@ block content
     #streetMap.street-map
 
     .summary-box
-      h3 Your date
+      h3 Summary:
+      // p with #{XXX.name} @ #{XXX.location}, #{XXX.time}.
+      p your date with BillyJoe @ Starbuck's at 12am.
+
+    .button-box
+      button.btn Send
+      button.btn Cancel
 
 
 block scripts
