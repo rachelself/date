@@ -6,6 +6,8 @@ var traceur = require('traceur');
 var Base = traceur.require(__dirname + '/base.js');
 var User = traceur.require(__dirname + '/user.js');
 var _ = require('lodash');
+var moment = require('moment');
+// var async = require('async');
 
 class Meeting {
 
@@ -18,7 +20,7 @@ class Meeting {
       if(user){
         var meeting = new Meeting();
         meeting._id = Mongo.ObjectID(obj._id);
-        meeting.when = new Date(`${obj.day} ${obj.time}`);
+        meeting.day = new Date(`${obj.day} ${obj.time} GMT-0000 (CDT)`);
         meeting.location = location;
         meeting.creatorId = Mongo.ObjectID(userId);
         meeting.inviteeId = Mongo.ObjectID(obj.inviteeId);
@@ -29,6 +31,24 @@ class Meeting {
       } else {
         fn(null);
       }
+    });
+  }
+
+  static readyDateInvites(dates, fn){
+    var newDates = [];
+    dates.forEach(date=>{
+      User.findById(date.creatorId, creator=>{
+        creator.photos.forEach(p=>{
+          if(p.isPrimary){
+            date.creatorPhoto = p.path;
+            date.day = moment(date.day).format('MMM Do YYYY, h:mm a');
+            newDates.push(date);
+            if(newDates.length === dates.length){
+              fn(newDates);
+            }
+          }
+        });
+      });
     });
   }
 

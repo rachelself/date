@@ -38,7 +38,7 @@ function ajax(url, verb, data={}, success=r=>console.log(r), dataType='html'){//
     obj.ratingImg = $(this).attr('data-ratingImg');
     obj.day = $('#date').val();
     obj.time = $('#time').val();
-    obj.inviteeId = '5394a2378e2606fb64cb8d16';//test. needs to be in data-inviteeId within document
+    obj.inviteeId = '539370186f438d00001412ac';//test. needs to be in data-inviteeId within document
     obj.availability = $('#availability').val();
 
     ajax('/dates', 'POST', obj, jsonObj=>{

@@ -61,10 +61,15 @@ class User {
       photo.blurb = photos.blurb[i];
       this.photos.push(photo);
     });
-    console.log('=======================this.photos');
-    console.log(this.photos);
   }
 
+  static getSuitors(user){
+    var id = user._id.toString();
+    users.find({suitors: id}).toArray((err, records)=>{
+      console.log('=======================records');
+      console.log(records);
+    });
+  }
 
   static create(obj, fn){
     users.findOne({email:obj.email}, (err,user)=>{

@@ -10,50 +10,40 @@ block content
     section.dates-box
 
       section.confirmed-dates-box
-        h3 Confirmed Dates
-        .date-item
-          .image-box
-            img(src='/img/old-lady.jpg')
-          .place-name Applebee's
-          .time-box
-            .weekday Wednesday
-            .digit-time 7:00
+        h4 Confirmed Dates
+        each date in dateInvites
+          if(date.isConfirmed)
+            .date-item
+              .image-box
+                img(src=date.creatorPhoto)
+              .place-name= date.location.name
+              .time= date.day
+              button View
 
       section.proposed-dates-box
         h3 Proposed Dates
-        .date-item
-          .image-box
-            img(src='/img/old-lady.jpg')
-          .place-name Applebee's
-          .time-box
-            .weekday Wednesday
-            .digit-time 7:00
-          button View
+        each date in dateInvites
+          if(!date.isConfirmed)
+            .date-item
+              .image-box
+                img(src=date.creatorPhoto)
+              .place-name= date.location.name
+              .time= date.day
+              button View
 
     section.interested-box
       h3 Interested
       .interested-box__inner
-        .interested-person
-          .image-box
-             img(src='/img/old-lady.jpg')
-          .name user.name
-          .profile-link-box
-            a.profile-link(href='Link goes here') profile
-          .remove-interest-box X
-        .interested-person
-          .image-box
-             img(src='/img/old-lady.jpg')
-          .name user.name
-          .profile-link-box
-            a.profile-link(href='Link goes here') profile
-          .remove-interest-box X
-        .interested-person
-          .image-box
-             img(src='/img/old-lady.jpg')
-          .name user.name
-          .profile-link-box
-            a.profile-link(href='Link goes here') profile
-          .remove-interest-box X
+        //- each suitor in suitors
+        //-   .interested-person
+        //-     .image-box
+        //-        each photo in suitor.photos
+        //-          if(photo.isPrimary)
+        //-            img(src=photo.path)
+        //-     .name= suitor.firstName
+        //-     .profile-link-box
+        //-       a.profile-link(href='/users/#{suitor._id}') Profile
+        //-     .remove-interest-box X
 
     section.mutual-box
       h3 Mutual

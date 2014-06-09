@@ -16,10 +16,18 @@ block content
     //-
     //-   button Go
 
-    .person
-      .image-box
-        img(src='/img/old-lady.jpg' alt='')
-      .bio-box
-        p.bio-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores et aliquid, molestias nulla vel aperiam officia harum perferendis dolor error illum tempora blanditiis ipsa tempore impedit aspernatur cum architecto perspiciatis officiis, recusandae amet?...
-        .name A name here.
-      button View
+    each user in users
+      .person
+        .image-box
+          if(user.photos.length)
+            each photo,i in user.photos
+              if(photo.isPrimary)
+                img(src=photo.path)
+                .blurb= user.blurb
+          else
+            img(src='/img/#{user.gender}.png')
+        .bio-box
+          p.bio-text= user.bio
+          .name= user.firstName
+        a(href='/users/#{user._id}')
+          button View

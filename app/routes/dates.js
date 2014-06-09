@@ -11,6 +11,7 @@
 var traceur = require('traceur');
 var Location = traceur.require(__dirname + '/../../app/models/location.js');
 var Meeting = traceur.require(__dirname + '/../../app/models/meeting.js');
+var User = traceur.require(__dirname + '/../../app/models/user.js');
 
 exports.new = (req, res)=>{
   res.render('dates/new');
@@ -25,9 +26,21 @@ exports.create = (req, res)=>{
 };
 
 exports.index = (req, res)=>{
+  var newDates = [];
   Meeting.findByInviteeId(req.session.userId, inviteeDates=>{
-    Meeting.findByCreatorId(req.session.userId, creatorDates=>{
-      res.render('dates/index', {dateInvites: inviteeDates, datesCreated: creatorDates});
+    Meeting.readyDateInvites(inviteeDates, newDates=>{
+      User.getSuitors(res.locals.user);
+      // var suitors = res.locals.user.suitors;
+      // var suitorUsers = [];
+      // suitors.forEach(s=>{
+      //   User.findById(s, u=>{
+      //     suitorUsers.push(u);
+      //     if(suitorUsers.length === suitors.length){
+          res.render('dates/index', {dateInvites: newDates});
+            // res.render('dates/index', {dateInvites: newDates, suitors: suitorUsers});
+      //     // }
+      //   });
+      // });
     });
   });
 };
