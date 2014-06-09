@@ -63,11 +63,45 @@ class User {
     });
   }
 
-  static getSuitors(user){
+  static getSuitors(user, fn){
+    console.log('function2');
     var id = user._id.toString();
     users.find({suitors: id}).toArray((err, records)=>{
-      console.log('=======================records');
-      console.log(records);
+      var iLike = [];
+      records.forEach(r=>{
+        iLike.push(r._id);
+      });
+
+      user.suitors.map(u=>{
+        u.toString();
+      });
+      var likes = user.suitors;
+      var matches = [];
+      iLike.forEach((user, i)=>{
+        likes.forEach((suitor, i)=>{
+          if(user.toString() === suitor.toString()){
+            matches.push(user.toString());
+          }
+        });
+      });
+      var potentials = _.difference(likes, matches);
+      var newPotentials = [];
+      var newMatches = [];
+      potentials.forEach(p=>{
+        User.findById(p, newP=>{
+          newPotentials.push(newP);
+          if(newPotentials.length === potentials.length){
+            matches.forEach(m=>{
+              User.findById(m, newM=>{
+                newMatches.push(newM);
+                if(newMatches.length === matches.length){
+                  fn(newPotentials, newMatches);
+                }
+              });
+            });
+          }
+        });
+      });
     });
   }
 

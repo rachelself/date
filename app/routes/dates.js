@@ -29,18 +29,9 @@ exports.index = (req, res)=>{
   var newDates = [];
   Meeting.findByInviteeId(req.session.userId, inviteeDates=>{
     Meeting.readyDateInvites(inviteeDates, newDates=>{
-      User.getSuitors(res.locals.user);
-      // var suitors = res.locals.user.suitors;
-      // var suitorUsers = [];
-      // suitors.forEach(s=>{
-      //   User.findById(s, u=>{
-      //     suitorUsers.push(u);
-      //     if(suitorUsers.length === suitors.length){
-          res.render('dates/index', {dateInvites: newDates});
-            // res.render('dates/index', {dateInvites: newDates, suitors: suitorUsers});
-      //     // }
-      //   });
-      // });
+      User.getSuitors(res.locals.user, (suitors, matches)=>{
+        res.render('dates/index', {dateInvites: newDates, suitors: suitors, matches: matches});
+      });
     });
   });
 };

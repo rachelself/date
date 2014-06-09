@@ -34,50 +34,41 @@ block content
     section.interested-box
       h3 Interested
       .interested-box__inner
-        //- each suitor in suitors
-        //-   .interested-person
-        //-     .image-box
-        //-        each photo in suitor.photos
-        //-          if(photo.isPrimary)
-        //-            img(src=photo.path)
-        //-     .name= suitor.firstName
-        //-     .profile-link-box
-        //-       a.profile-link(href='/users/#{suitor._id}') Profile
-        //-     .remove-interest-box X
+        each suitor in suitors
+          .interested-person
+            .image-box
+               if(suitor.photos.length)
+                     each photo,i in suitor.photos
+                       if(photo.isPrimary)
+                         img(src=photo.path)
+                   else
+                     img(src='/img/#{suitor.gender}.png')
+            .name= suitor.firstName
+            .profile-link-box
+              a.profile-link(href='/users/#{suitor._id}') Profile
+            .remove-interest-box X
 
     section.mutual-box
       h3 Mutual
       .mutual-box__inner
         .mutual-box__another-inner
           //- .arrow.arrow-left arrow
-          .mutual-person
-            .person-name Name
-            .image-box
-              img(src='/img/old-lady.jpg')
-            .profile-link-box
-              a.profile-link(href='') Profile
-            .button-box
-              button#invite-mutual-person Propose Date
-              button#invite-contact-person Propose Contact
-          .mutual-person
-            .person-name Name
-            .image-box
-              img(src='/img/old-lady.jpg')
-            .profile-link-box
-              a.profile-link(href='') Profile
-            .button-box
-              button#invite-mutual-person Propose Date
-              button#invite-contact-person Propose Contact
-          .mutual-person
-            .person-name Name
-            .image-box
-              img(src='/img/old-lady.jpg')
-            .profile-link-box
-              a.profile-link(href='') Profile
-            .button-box
-              button#invite-mutual-person Propose Date
-              button#invite-contact-person Propose Contact
-          //- .arrow.arrow-right arrow
+          each match in matches
+            .mutual-person
+              .person-name= match.firstName
+              .image-box
+                if(match.photos.length)
+                  each photo,i in match.photos
+                    if(photo.isPrimary)
+                      img(src=photo.path)
+                      .blurb= photo.blurb
+                else
+                  img(src='/img/#{match.gender}.png')
+              .profile-link-box
+                a.profile-link(href='/users/#{match._id}') Profile
+              .button-box
+                button#invite-mutual-person Propose Date
+                button#invite-contact-person Propose Contact
 
         //- .button-box
         //-   button#invite-mutual-person Propose Date
