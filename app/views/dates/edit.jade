@@ -2,13 +2,13 @@ extends ../shared/template
 
 block content
 
-  .container__edit
+  .container__edit-date
 
     header.header
       include ../shared/nav
 
     section.new-date__top
-      h3#editDate(data-id='#{meeting._id}') Date Proposal
+      h3#editDate(data-id='#{meeting._id}') Edit Date Proposal
       //- p.new-date__tagline for #{user.name}
 
     section.new-date--form-box
@@ -25,20 +25,21 @@ block content
       p= meeting.location.phone
       button(data-lat='#{meeting.location.lat}', data-lng='#{meeting.location.lng}')#directions Get Directions
 
-    #controls
-      h1 Google Map
-      input#cityOrZip(type='text', autofocus=true, placeholder='Zip Code or City, State')
-      input#companyName(type='text', placeholder='Italian, Theaters, Burgers, Beer, etc.')
-      button#search Search
+    .inputs-wrapper
+      #controls.controls
+        h1 Map It
+        input.form-control#cityOrZip(type='text', autofocus=true, placeholder='Zip Code or City, State')
+        input.form-control#companyName(type='text', placeholder='Italian, Theaters, Burgers, Beer, etc.')
+        button#search Search
 
-    #dateAndTime
-      input#date(type='date', value='#{day}')
-      input#time(type='time')
-      input#availability(type='textarea', placeholder='This time will work better for me...')
+      #dateAndTime.date-and-time
+        input.form-control#date(type='date', value='#{day}')
+        input.form-control#time(type='time')
+        textarea.form-control#availability(type='textarea', placeholder='Your message here...')
 
-    #searchListing
+    #searchListing.search-listing
 
-    #map
+    #map.map
 
 
 block scripts

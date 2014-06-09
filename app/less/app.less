@@ -796,9 +796,14 @@ html {
 // Also look up "Color Operation Functions" and "Color Blending Functions": ( http://lesscss.org/functions/#color-operations )
 
 header {
-  &:extend(.clearfix:before, .clearfix:after);
+  // &:extend(.clearfix:before, .clearfix:after);
+  align-items: center;
+  display: flex;
   height: @lh * 4;
-  margin-bottom: @lh; // example of vertical-rhythm
+  margin-bottom: @lh;
+  max-width: @lh * 44;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
   > h1 {
     display: block;
@@ -952,6 +957,7 @@ header {
 .container__profile {
   background-repeat: repeat;
   .bio {
+    &:extend(.clearfix:before, .clearfix:after);
     display: flex;
     margin: 0 auto (@lh) auto;
     background-color: @od-orange;
@@ -964,11 +970,6 @@ header {
       position: absolute;
       right: @lh * 3;
       top: -(@lh);
-    }
-    > .badge {
-      position: absolute;
-      top: -(@lh);
-      right: 0;
     }
     > .image-box {
       align-items: center;
@@ -1133,6 +1134,7 @@ header {
           flex-direction: column;
           > img {
             max-height: @lh * 2.75;
+            max-width: @lh * 2.75;
           }
         }
         > .name {
@@ -1251,7 +1253,8 @@ header {
       > .inner-date-wrapper {
         align-items: center;
         display: flex;
-        width: @lh * 20;
+        flex-wrap: wrap;
+        width: @lh * 25;
         > .date-item {
           align-items: center;
           padding: 10px;
@@ -1513,6 +1516,7 @@ header {
     }
     > .map {
       margin: 0 auto;
+      width: 800px !important;
     }
   }
   > .summary-box {
@@ -1813,21 +1817,72 @@ body{
   height: 550px;
 }
 
-.where > h3, #time{
-  display: inline-block;
-  padding: 15px;
+.container__show-date {
+  .where > h3, #time{
+    display: inline-block;
+    padding: 15px;
+  }
+
+  .where > #directions,
+  .controls > form > #confirmDate,
+  .controls > form > #declineDate,
+  .controls > a > #editDate{
+    background-color: @od-orange;
+    display: inline-block;
+    padding: 5px 7px;
+    margin: 5px;
+    &:hover{
+      background-color: @od-o-hover;
+    }
+  }
 }
 
-.where > #directions,
-.controls > form > #confirmDate,
-.controls > form > #declineDate,
-.controls > a > #editDate{
-  background-color: @od-orange;
-  display: inline-block;
-  padding: 5px 7px;
-  margin: 5px;
-  &:hover{
-    background-color: @od-o-hover;
+
+.container__edit-date {
+  // .new-date__top {
+  //   h3 {
+  //     font-size: @fs * 2;
+  //   }
+  // }
+  .when,
+  .where {
+    height: @lh * 10.5;
+    padding-top: @lh;
+    padding-bottom: @lh;
+    padding-left: @lh * 7;
+    width: 50%;
+    float: left;
+    > h3 {
+      margin-right: @lh / 2;
+    }
+  }
+  .when {
+    float: left;
+  }
+  .inputs-wrapper {
+    float: left;
+    width: 50%;
+  }
+  .controls > input,
+  .date-and-time > input {
+    margin-bottom: @lh / 5;
+  }
+  .controls {
+    margin: 0 auto;
+    max-width: @lh * 12;
+    button {
+      background: @od-orange;
+      float: right;
+      margin-right: -@lh * 3;
+      padding: @lh / 4;
+      &:hover {
+        background: @od-o-hover;
+      }
+    }
+  }
+  .date-and-time {
+    margin: 0 auto @lh;
+    max-width: @lh * 12;
   }
 }
 
