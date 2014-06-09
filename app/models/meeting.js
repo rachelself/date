@@ -11,8 +11,31 @@ var moment = require('moment');
 
 class Meeting {
 
-  save(fn){
+  update(obj, location) {
+    console.log(obj.day);
+    console.log(obj.time);
+    var creator = this.creatorId;
+    var invitee = this.inviteeId;
+    this.inviteeId = creator;
+    this.creatorId = invitee;
+    this.day = new Date(`${obj.day} ${obj.time} GMT-0500 (CDT)`);
+    this.location = location;
+    this.availability = obj.availability;
+    this.isConfirmed = false;
+    this.isComplete = false;
+  }
+
+  confirm() {
+    this.isConfirmed = true;
+  }
+
+  save(fn) {
     meetings.save(this, ()=>fn());
+  }
+
+  static RemoveById(id, fn) {
+    id = Mongo.ObjectID(id);
+    meetings.findAndRemove({_id:id}, ()=>fn());
   }
 
   static create(userId, obj, location, fn){
@@ -20,7 +43,7 @@ class Meeting {
       if(user){
         var meeting = new Meeting();
         meeting._id = Mongo.ObjectID(obj._id);
-        meeting.day = new Date(`${obj.day} ${obj.time} GMT-0000 (CDT)`);
+        meeting.day = new Date(`${obj.day} ${obj.time} GMT-0500 (CDT)`);
         meeting.location = location;
         meeting.creatorId = Mongo.ObjectID(userId);
         meeting.inviteeId = Mongo.ObjectID(obj.inviteeId);
