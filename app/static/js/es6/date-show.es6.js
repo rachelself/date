@@ -20,6 +20,7 @@ function ajax(url, verb, data={}, success=r=>console.log(r), dataType='html'){//
     $('#directions').click(getDirections);
   }
 
+
   function renderDateTime() {
     var day = $('#time').attr('data-day');
     day = moment(day).format('MMM Do YYYY, h:mm a');

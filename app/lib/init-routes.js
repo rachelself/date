@@ -39,9 +39,10 @@ function load(app, fn){
   app.post('/dates', dbg, dates.create);
   app.get('/dates/:id/edit', dbg, dates.edit);
   app.get('/dates/:id', dbg, dates.show);
-  app.put('/dates/:id', dbg, dates.confirm);
-  app.delete('/dates/:id', dbg, dates.destroy);
-  app.put('/dates/:id', dbg, dates.update);
+  app.post('/dates/destroy/:id', dbg, dates.destroy);
+  app.post('/dates/update/:id', dbg, dates.update);
+  app.post('/dates/:id', dbg, dates.confirm);
+
 
   app.post('/locations', dbg, locations.create);
 

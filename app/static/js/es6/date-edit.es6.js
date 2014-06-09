@@ -1,4 +1,4 @@
-/* global google:true */
+/* global google, moment */
 /* jshint unused:false */
 /* jshint camelcase:false */
 
@@ -15,16 +15,26 @@ function ajax(url, verb, data={}, success=r=>console.log(r), dataType='html'){//
   function init() {
     initMap(36.17, -86.778, 13);
     geoLocate();
+    renderDateTime();
     $('#search').click(clearListing);
     $('#search').click(getLocations);
     $('#map').on('click', '.directions', getDirections);
     $('#searchListing').on('click', '.dateLocation', chooseDateLocation);
     $('#searchListing').on('click', '.editDate', editDate);
-    $('#searchListing').on('click', '.confirmDate', createDate);
+    $('#searchListing').on('click', '.confirmDate', updateDate);
   }
 
-  function createDate(){
+
+  function renderDateTime() {
+    var day = $('#dateTime').attr('data-day');
+    day = moment(day).format('MMM Do YYYY, h:mm a');
+
+    $('.when').append(day);
+  }
+
+  function updateDate(){
     var obj = {};
+    obj.meetingId = $('#editDate').attr('data-id');
     obj.rating = $(this).attr('data-rating');
     obj.lat = $(this).attr('data-lat');
     obj.lng = $(this).attr('data-lng');
@@ -38,10 +48,9 @@ function ajax(url, verb, data={}, success=r=>console.log(r), dataType='html'){//
     obj.ratingImg = $(this).attr('data-ratingImg');
     obj.day = $('#date').val();
     obj.time = $('#time').val();
-    obj.inviteeId = '5394a2378e2606fb64cb8d16';//test. needs to be in data-inviteeId within document
     obj.availability = $('#availability').val();
 
-    ajax('/dates', 'POST', obj, jsonObj=>{
+    ajax(`/dates/update/${obj.meetingId}`, 'POST', obj, jsonObj=>{
       window.location = '/users';
     }, 'json');
   }

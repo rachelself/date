@@ -9,8 +9,10 @@
 // app.put('/dates/:id', dbg, dates.modify);
 
 var traceur = require('traceur');
+var moment = require('moment');
 var Location = traceur.require(__dirname + '/../../app/models/location.js');
 var Meeting = traceur.require(__dirname + '/../../app/models/meeting.js');
+
 
 exports.new = (req, res)=>{
   res.render('dates/new');
@@ -39,17 +41,33 @@ exports.show = (req, res)=>{
 };
 
 exports.confirm = (req, res)=>{
-
+  Meeting.findById(req.params.id, meeting=>{
+    meeting.confirm();
+    meeting.save(()=>{
+      res.redirect('/dates');
+    });
+  });
 };
 
 exports.destroy = (req, res)=>{
-
+  Meeting.RemoveById(req.params.id, ()=>{
+    res.redirect('/dates');
+  });
 };
 
 exports.edit = (req, res)=>{
-  res.render('dates/edit');
+  Meeting.findById(req.params.id, meeting=>{
+    var day = moment(meeting.day).format('YYYY-MM-DD');
+    res.render('dates/edit', {meeting:meeting, day:day});
+  });
 };
 
 exports.update = (req, res)=>{
-
+  var location = new Location(req.body);
+  Meeting.findById(req.params.id, meeting=>{
+    meeting.update(req.body, location);
+    meeting.save(()=>{
+      res.send(meeting);
+    });
+  });
 };

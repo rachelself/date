@@ -15,7 +15,7 @@ block content
 
     #dateInfo
       .when
-        h3#time(data-day='#{meeting.day}', data-time='#{meeting.time}') When:
+        h3#time(data-day='#{meeting.day}') When:
 
       .where
         h3(data-lat='#{meeting.location.lat}', data-lng='#{meeting.location.lng}') Where:
@@ -28,9 +28,13 @@ block content
         button(data-lat='#{meeting.location.lat}', data-lng='#{meeting.location.lng}')#directions Get Directions
 
       .controls
-        button#confirmDate Confirm
-        button#declineDate Decline
-        button#editDate Edit Details
+        form(action='/dates/#{meeting._id}', method='POST')
+          button#confirmDate Confirm
+        form(action='/dates/destroy/#{meeting._id}', method='POST')
+          button#declineDate Decline
+        a(href='/dates/#{meeting._id}/edit')
+          button#editDate Edit Details
+
 
     #streetView
     #map

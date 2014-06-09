@@ -8,10 +8,22 @@ block content
       include ../shared/nav
 
     section.new-date__top
-      h3 New Date Proposal
+      h3#editDate(data-id='#{meeting._id}') Date Proposal
       //- p.new-date__tagline for #{user.name}
 
     section.new-date--form-box
+    .when
+      h3#dateTime(data-day='#{meeting.day}') When:
+
+    .where
+      h3(data-lat='#{meeting.location.lat}', data-lng='#{meeting.location.lng}') Where:
+      h4= meeting.location.name
+      p
+        img(src='#{meeting.location.ratingImg}')
+      p= meeting.location.address1
+      p #{meeting.location.city}, #{meeting.location.state} #{meeting.location.zip}
+      p= meeting.location.phone
+      button(data-lat='#{meeting.location.lat}', data-lng='#{meeting.location.lng}')#directions Get Directions
 
     #controls
       h1 Google Map
@@ -20,9 +32,9 @@ block content
       button#search Search
 
     #dateAndTime
-      input#date(type='date', value='#{meeting.day}')
-      input#time(type='time', value='#{meeting.time}')
-      input#availability(type='textarea', placeholder='I am also available most evenings next week if that works better for you...')
+      input#date(type='date', value='#{day}')
+      input#time(type='time')
+      input#availability(type='textarea', placeholder='This time will work better for me...')
 
     #searchListing
 
