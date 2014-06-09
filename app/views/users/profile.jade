@@ -8,10 +8,10 @@ block content
       include ../shared/nav
     if(profile)
       section.bio
-        img.badge
+        //- img.badge
         form.add-interest-button(method='post', action='/users/suitors')
           input(type='hidden', name='userId', value=profile._id)
-          button Interested
+          button.interested Interested
         .image-box
           if(profile.photos.length)
             each photo,i in profile.photos

@@ -15,20 +15,20 @@ block content
     //-     option Option
     //-   button.add Add
     //-   button.go Go
+    .person-box
+      each user in users
+        .person
+          .image-box
 
-    each user in users
-      .person
-        .image-box
+            if(user.photos.length)
+              each photo,i in user.photos
+                if(photo.isPrimary)
+                  img(src=photo.path)
+                  .name= user.firstName
+            else
+              img(src='/img/#{user.gender}.png')
+          .bio-box
+            p.bio-text= user.bio
 
-          if(user.photos.length)
-            each photo,i in user.photos
-              if(photo.isPrimary)
-                img(src=photo.path)
-                .name= user.firstName
-          else
-            img(src='/img/#{user.gender}.png')
-        .bio-box
-          p.bio-text= user.bio
-
-        a(href='/users/#{user._id}')
-          button View
+          a(href='/users/#{user._id}')
+            button View
