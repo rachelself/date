@@ -8,13 +8,12 @@ block content
       include ../shared/nav
 
     section.top-section
-      h3 New Date Proposal
+      h3#invitee(data-id=inviteeId) New Date Proposal
       p.tagline for #{user.firstName}
 
     section.form-box
       h4 When are you available?
       .form-box__inner
-
         #dateAndTime.date-and-time
           textarea.form-control#availability(type='textarea', placeholder='So does next week work better for you?')
           input.form-control#date(type='date' placeholder='07/11/2015')
@@ -41,7 +40,6 @@ block content
     .button-box
       button.btn Send
       button.btn Cancel
-
 
 block scripts
   script(src='/js/es6/compiled/map.js')

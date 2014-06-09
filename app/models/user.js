@@ -48,23 +48,92 @@ class User {
   }
 
   updatePhotos(photos){
+    console.log(photos);
+    console.log('length===============');
+    console.log(photos.fileName.length);
     this.photos = [];
-    photos.fileName.forEach((p,i)=>{
+    if(typeof photos.fileName === 'string'){
       var photo = {};
-      photo.fileName = photos.fileName[i];
-      photo.path = photos.path[i];
-      if(i === (photos.primary * 1)){
-        photo.isPrimary = true;
-      } else {
-        photo.isPrimary = false;
-      }
-      photo.blurb = photos.blurb[i];
+      photo.fileName = photos.fileName;
+      photo.path = photos.path;
+      photo.isPrimary = true;
+      photo.blurb = photos.blurb;
       this.photos.push(photo);
-    });
-    console.log('=======================this.photos');
-    console.log(this.photos);
+    } else {
+      photos.fileName.forEach((p,i)=>{
+        var photo = {};
+        photo.fileName = photos.fileName[i];
+        photo.path = photos.path[i];
+        if(i === (photos.primary * 1)){
+          photo.isPrimary = true;
+        } else {
+          photo.isPrimary = false;
+        }
+        photo.blurb = photos.blurb[i];
+        this.photos.push(photo);
+      });
+    }
   }
 
+  static getSuitors(user, fn){
+    var id = user._id.toString();
+    users.find({suitors: id}).toArray((err, records)=>{
+      console.log(records);
+      var iLike = [];
+      records.forEach(r=>{
+        iLike.push(r._id);
+      });
+
+      user.suitors.map(u=>{
+        u.toString();
+      });
+      var likes = user.suitors;
+      var matches = [];
+      iLike.forEach((user, i)=>{
+        likes.forEach((suitor, i)=>{
+          if(user.toString() === suitor.toString()){
+            matches.push(user.toString());
+          }
+        });
+      });
+      var potentials = _.difference(likes, matches);
+      var newPotentials = [];
+      var newMatches = [];
+
+      if(potentials.length){
+        potentials.forEach(p=>{
+          User.findById(p, newP=>{
+            newPotentials.push(newP);
+            if(newPotentials.length === potentials.length){
+              if(matches.length){
+                matches.forEach(m=>{
+                  User.findById(m, newM=>{
+                    newMatches.push(newM);
+                    if(newMatches.length === matches.length){
+                      fn(newPotentials, newMatches);
+                    }
+                  });
+                });
+              } else {
+                fn(newPotentials, null);
+              }
+            }
+          });
+        });
+      } else if(matches.length) {
+        matches.forEach(m=>{
+          User.findById(m, newM=>{
+            newMatches.push(newM);
+            if(newMatches.length === matches.length){
+              fn(null, newMatches);
+            }
+          });
+        });
+      } else {
+        fn(null, null);
+      }
+    });
+  }
 
   static create(obj, fn){
     users.findOne({email:obj.email}, (err,user)=>{
@@ -81,8 +150,8 @@ class User {
         user.location = obj.location;
         user.lookingFor = obj.lookingFor;
         user.age = obj.age;
-        user.interests = [];
-        user.values = [];
+        user.interests = ['interest1', 'interest2', 'interest3'];
+        user.values = ['value1', 'value2', 'value3'];
         user.bio ='';
         user.suitors = [];
         user.blockedUsers = [];

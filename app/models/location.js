@@ -10,6 +10,7 @@ class Location {
     this.city = obj.city;
     this.state = obj.state;
     this.zip = obj.zip;
+    this.phone = obj.phone;
     this.url = obj.url;
     this.lat = obj.lat;
     this.lng = obj.lng;

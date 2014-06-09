@@ -16,13 +16,19 @@ block content
     //-   button.add Add
     //-   button.go Go
 
-    section.person-box
+    each user in users
       .person
         .image-box
-          img(src='/img/lady1.jpg' alt='')
-          .name A name here.
 
+          if(user.photos.length)
+            each photo,i in user.photos
+              if(photo.isPrimary)
+                img(src=photo.path)
+                .name= user.firstName
+          else
+            img(src='/img/#{user.gender}.png')
         .bio-box
-          p.bio-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores et aliquid, molestias nulla vel aperiam officia harum perferendis dolor error illum tempora blanditiis ipsa tempore impedit aspernatur cum architecto perspiciatis officiis, recusandae amet?
+          p.bio-text= user.bio
 
-        button.btn View
+        a(href='/users/#{user._id}')
+          button View

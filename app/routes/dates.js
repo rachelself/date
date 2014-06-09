@@ -9,11 +9,14 @@
 // app.put('/dates/:id', dbg, dates.modify);
 
 var traceur = require('traceur');
+var moment = require('moment');
 var Location = traceur.require(__dirname + '/../../app/models/location.js');
 var Meeting = traceur.require(__dirname + '/../../app/models/meeting.js');
+var User = traceur.require(__dirname + '/../../app/models/user.js');
+
 
 exports.new = (req, res)=>{
-  res.render('dates/new');
+  res.render('dates/new', {inviteeId: req.params.id});
 };
 
 exports.create = (req, res)=>{
@@ -25,29 +28,60 @@ exports.create = (req, res)=>{
 };
 
 exports.index = (req, res)=>{
+  var newDates = [];
   Meeting.findByInviteeId(req.session.userId, inviteeDates=>{
     Meeting.findByCreatorId(req.session.userId, creatorDates=>{
-      res.render('dates/index', {dateInvites: inviteeDates, datesCreated: creatorDates});
+      if(inviteeDates.length){
+        Meeting.readyDateInvites(inviteeDates, newDates=>{
+          User.getSuitors(res.locals.user, (suitors, matches)=>{
+            res.render('dates/index', {creatorDates: creatorDates, dateInvites: newDates, suitors: suitors, matches: matches});
+          });
+        });
+      } else {
+        User.getSuitors(res.locals.user, (suitors, matches)=>{
+          console.log('======================suitors');
+          console.log(suitors);
+          res.render('dates/index', {creatorDates: creatorDates, dateInvites: null, suitors: suitors, matches: matches});
+        });
+      }
     });
   });
 };
 
 exports.show = (req, res)=>{
-  res.render('dates/show');
+  Meeting.findById(req.params.id, meeting=>{
+    res.render('dates/show', {meeting:meeting});
+  });
 };
 
 exports.confirm = (req, res)=>{
-
+  Meeting.findById(req.params.id, meeting=>{
+    meeting.confirm();
+    meeting.save(()=>{
+      res.redirect('/dates');
+    });
+  });
 };
 
 exports.destroy = (req, res)=>{
-
+  Meeting.RemoveById(req.params.id, ()=>{
+    res.redirect('/dates');
+  });
 };
 
 exports.edit = (req, res)=>{
-  res.render('dates/edit');
+  Meeting.findById(req.params.id, meeting=>{
+    var day = moment(meeting.day).format('YYYY-MM-DD');
+    res.render('dates/edit', {meeting:meeting, day:day});
+  });
 };
 
 exports.update = (req, res)=>{
-
+  var location = new Location(req.body);
+  Meeting.findById(req.params.id, meeting=>{
+    meeting.update(req.body, location);
+    meeting.save(()=>{
+      res.send(meeting);
+    });
+  });
 };

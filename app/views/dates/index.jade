@@ -11,100 +11,82 @@ block content
       h3 Dates
 
       section.confirmed-dates-box
-        h4 Confirmed
+        h4 Confirmed Dates
         .inner-date-wrapper
-          .date-item
-            .image-box
-              img(src='/img/lady1.jpg')
-            .place-name Applebee's
-            .time Time-here
-            button.view View
+          if(dateInvites)
+            each date in dateInvites
+              if(date.isConfirmed)
+                .date-item
+                  .image-box
+                    img(src=date.creatorPhoto)
+                  .place-name= date.location.name
+                  .time= date.day
+                  a(href='/dates/#{date._id}')
+                    button View
+          if(creatorDates)
+            each date in creatorDates
+              if(date.isConfirmed)
+                .date-item
+                  .image-box
+                    img(src=date.creatorPhoto)
+                  .place-name= date.location.name
+                  .time= date.day
+                  a(href='/dates/#{date._id}')
+                    button View
 
       section.proposed-dates-box
-        h4 Proposed
+        h4 Proposed Dates
         .inner-date-wrapper
-          .date-item
-            .image-box
-              img(src='/img/lady2.jpg')
-            .place-name Applebee's
-            .time Time-here
-            button.view View
+          if(dateInvites)
+            each date in dateInvites
+              if(!date.isConfirmed)
+                .date-item
+                  .image-box
+                    img(src=date.creatorPhoto)
+                  .place-name= date.location.name
+                  .time= date.day
+                  a(href='/dates/#{date._id}')
+                    button View
 
     section.interested-box
       h3 Interested
       .interested-box__inner
-        .interested-person
-          .image-box
-             img(src='/img/lady3.jpg')
-          .name user.name
-          .profile-link-box
-            a.profile-link(href='Link goes here') profile
-          .remove-interest-box X
-        .interested-person
-          .image-box
-             img(src='/img/lady1.jpg')
-          .name user.name
-          .profile-link-box
-            a.profile-link(href='Link goes here') profile
-          .remove-interest-box X
-        .interested-person
-          .image-box
-             img(src='/img/lady1.jpg')
-          .name user.name
-          .profile-link-box
-            a.profile-link(href='Link goes here') profile
-          .remove-interest-box X
+        if(suitors)
+          each suitor in suitors
+            .interested-person
+              .image-box
+                 if(suitor.photos.length)
+                       each photo,i in suitor.photos
+                         if(photo.isPrimary)
+                           img(src=photo.path)
+                     else
+                       img(src='/img/#{suitor.gender}.png')
+              .name= suitor.firstName
+              .profile-link-box
+                a.profile-link(href='/users/#{suitor._id}') Profile
+              .remove-interest-box X
 
     section.mutual-box
       h3 Mutual
       .mutual-box__inner
         .mutual-box__another-inner
-          //- .arrow.arrow-left arrow
-          .mutual-person
-            .person-name Name
-            .image-box
-              img(src='/img/lady3.jpg')
-            .profile-link-box
-              a.profile-link(href='') Profile
-            .button-box
-              button.invite-mutual-person Propose Date
-              button.invite-contact-person Propose Contact
-          .mutual-person
-            .person-name Name
-            .image-box
-              img(src='/img/lady2.jpg')
-            .profile-link-box
-              a.profile-link(href='') Profile
-            .button-box
-              button.invite-mutual-person Propose Date
-              button.invite-contact-person Propose Contact
-          .mutual-person
-            .person-name Name
-            .image-box
-              img(src='/img/lady1.jpg')
-            .profile-link-box
-              a.profile-link(href='') Profile
-            .button-box
-              button.invite-mutual-person Propose Date
-              button.invite-contact-person Propose Contact
-          .mutual-person
-            .person-name Name
-            .image-box
-              img(src='/img/lady2.jpg')
-            .profile-link-box
-              a.profile-link(href='') Profile
-            .button-box
-              button.invite-mutual-person Propose Date
-              button.invite-contact-person Propose Contact
-          .mutual-person
-            .person-name Name
-            .image-box
-              img(src='/img/lady1.jpg')
-            .profile-link-box
-              a.profile-link(href='') Profile
-            .button-box
-              button.invite-mutual-person Propose Date
-              button.invite-contact-person Propose Contact
+          if(matches)
+            each match in matches
+              .mutual-person
+                .person-name= match.firstName
+                .image-box
+                  if(match.photos.length)
+                    each photo,i in match.photos
+                      if(photo.isPrimary)
+                        img(src=photo.path)
+                  else
+                    img(src='/img/#{match.gender}.png')
+                .profile-link-box
+                  a.profile-link(href='/users/#{match._id}') Profile
+                .button-box
+                  a(href='/dates/new/#{match._id}')
+                    button#invite-mutual-person.invite-mutual-person Propose Date
+                  button#invite-contact-person.invite-contact-person Propose Contact
 
 
     //- section.blocked-box
