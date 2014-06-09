@@ -1259,8 +1259,14 @@ header {
           font-size: @fs * .77;
           justify-content: space-between;
           margin-bottom: @lh / 2;
-          max-width: @lh * 15;
           width: 100%;
+          > a > button{
+            background-color: @od-orange;
+            padding: 5px 7px;
+            &:hover{
+              background-color: @od-o-hover;
+            }
+          }
           > .image-box {
             align-items: center;
             border: 1px solid @od-gray;
@@ -1783,6 +1789,45 @@ body{
       padding: 5px;
       width: 100%;
     }
+  }
+}
+
+.new-date__top{
+  text-align: center;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+#dateInfo{
+    background-color: @od-white;
+    padding: 20px;
+    text-align: center;
+    width: 50%;
+    height: 550px;
+    float: left;
+
+}
+
+#map{
+  width: 50%;
+  height: 550px;
+}
+
+.where > h3, #time{
+  display: inline-block;
+  padding: 15px;
+}
+
+.where > #directions,
+.controls > form > #confirmDate,
+.controls > form > #declineDate,
+.controls > a > #editDate{
+  background-color: @od-orange;
+  display: inline-block;
+  padding: 5px 7px;
+  margin: 5px;
+  &:hover{
+    background-color: @od-o-hover;
   }
 }
 

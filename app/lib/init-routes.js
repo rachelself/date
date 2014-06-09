@@ -25,6 +25,7 @@ function load(app, fn){
 
   app.get('/users/search', dbg, users.search);
   app.get('/users', dbg, users.index);
+  app.get('/users/suitors/:id', dbg, users.updateSuitors);
   app.post('/users/suitors', dbg, users.suitors);
   app.post('/users/update', dbg, users.update);
   app.post('/users/photos', dbg, users.addPhotos);

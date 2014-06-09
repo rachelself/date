@@ -185,6 +185,17 @@ class User {
     Base.findAll(users, User, fn);
   }
 
+  static findByLookingFor(user, fn){
+    users.find({gender:user.lookingFor}).toArray((err, users)=>{
+      users = _.remove(users, u=>{
+        if(u._id.toString() !== user._id.toString()){
+          return u;
+        }
+      });
+      fn(users);
+    });
+  }
+
 }
 
 module.exports = User;

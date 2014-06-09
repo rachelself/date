@@ -8,6 +8,7 @@
 var multiparty = require('multiparty');
 var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../../app/models/user.js');
+var _ = require('lodash');
 
 
 exports.index = (req, res)=>{
@@ -89,8 +90,21 @@ exports.suitors = (req, res)=>{
   });
 };
 
+exports.updateSuitors = (req, res)=>{
+  var user = res.locals.user;
+  console.log(user.suitors);
+  user.suitors = _.remove(user.suitors, x=>{
+    if(x.toString() !== req.params.id.toString()){
+      return x;
+    }
+  });
+  user.save(()=>{
+    res.redirect('/dates');
+  });
+};
+
 exports.search = (req, res)=>{
-  User.findAll(records=>{
+  User.findByLookingFor(res.locals.user, records=>{
     res.render('users/search', {users: records});
   });
 };

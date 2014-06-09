@@ -64,7 +64,8 @@ block content
               .name= suitor.firstName
               .profile-link-box
                 a.profile-link(href='/users/#{suitor._id}') Profile
-              .remove-interest-box X
+              a(href='/users/suitors/#{suitor._id}')
+                .remove-interest-box X
 
     section.mutual-box
       h3 Mutual
@@ -86,7 +87,7 @@ block content
                 .button-box
                   a(href='/dates/new/#{match._id}')
                     button#invite-mutual-person.invite-mutual-person Propose Date
-                  button#invite-contact-person.invite-contact-person Propose Contact
+                  //- button#invite-contact-person.invite-contact-person Propose Contact
 
 
     //- section.blocked-box

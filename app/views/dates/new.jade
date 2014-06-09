@@ -9,7 +9,7 @@ block content
 
     section.top-section
       h3#invitee(data-id=inviteeId) New Date Proposal
-      p.tagline for #{user.firstName}
+      p.tagline from #{user.firstName}
 
     section.form-box
       h4 When are you available?
@@ -37,9 +37,9 @@ block content
     //-   // p with #{XXX.name} @ #{XXX.location}, #{XXX.time}.
     //-   p your date with BillyJoe @ Starbuck's at 12am.
 
-    .button-box
-      button.btn Send
-      button.btn Cancel
+    //- .button-box
+    //-   button.btn Send
+    //-   button.btn Cancel
 
 block scripts
   script(src='/js/es6/compiled/map.js')
