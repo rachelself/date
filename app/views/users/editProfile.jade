@@ -7,7 +7,6 @@ block content
     header.header
       include ../shared/nav
       form(method='POST', action='/users/update')
-        button Save Profile
         section.bio
           img.badge
           .image-box
@@ -23,7 +22,7 @@ block content
           .stats
             ul
               li Zip Code:
-                input(type='text', name='location', value=user.location)
+                input.form-control(type='text', name='location', value=user.location)
               li Gender:
                 span= user.gender
               li Age:
@@ -32,6 +31,9 @@ block content
             h3 Bio
             p.bio.text
               textarea.form-control(name='bio')= user.bio
+          .save-box
+            img.saveIcon(src='/img/signup.svg')
+            button.saveProfile Save Profile
 
 
         section.interests-values-box
@@ -40,10 +42,10 @@ block content
             ul
              each interest in user.interests
                li
-                 input(type='text', name='interests', value=interest)
+                 input.form-control(type='text', name='interests', value=interest)
           .values-box
             h3 Values
               ul
                 each value in user.values
                   li
-                    input(type='text', name='values', value=value)
+                    input.form-control(type='text', name='values', value=value)
