@@ -1432,7 +1432,8 @@ header {
   > .form-box,
   > .controls
   > .date-and-time,
-  > .summary-box {
+  > .summary-box,
+  > .search-listing{
     margin-bottom: @lh;
   }
   > .top-section {
@@ -1505,6 +1506,42 @@ header {
       }
     }
   }
+  > .search-listing{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    > div{
+      background: @od-white;
+      width: @lh * 15;
+      border: 1px solid #ccc;
+      padding: @lh;
+      display: flex;
+      align-items: center;
+      height: 300px;
+      flex-direction: column;
+      max-width: 33%;
+      flex-wrap: wrap;
+      > h3{
+        text-align: center;
+      }
+      > a{
+        color: @od-o-hover;
+        margin-bottom: @lh / 2;
+      }
+      > .dateLocation {
+        padding: @lh / 4;
+        width: @lh * 3;
+        background-color: @od-orange;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        &:hover{
+          background-color: @od-o-hover;
+        }
+      }
+    }
+  }
   > .map-box {
     margin: 0 auto @lh;
     text-align: center;
@@ -1519,10 +1556,14 @@ header {
     }
   }
   > .summary-box {
-    border: 1px solid #ccc;
-    display: block;
     margin: 0 auto @lh;
     width: 61%;
+    background-color: @od-dpurple;
+    color: @od-white;
+    text-align: center;
+    height: @lh * 2.5;
+    line-height: @lh * 2.5;
+
     > h3 {
       display: inline-block;
       font-size: @fs * 1.2;
@@ -1538,10 +1579,22 @@ header {
     text-align: center;
     width: 61%;
     > button {
+      width: @lh * 8;
       font-size: @fs * .9;
       padding: @lh / 2;
       &:nth-of-type(1) {
         margin-right: @lh;
+        background-color: @od-orange;
+        &:hover{
+          background-color: @od-o-hover;
+        }
+      }
+      &:nth-of-type(2){
+        background-color: gray;
+        &:hover{
+          color: @od-white;
+          background-color: @od-gray;
+        }
       }
     }
   }
@@ -1674,6 +1727,19 @@ button.view{
 
 body{
   background-image: url(/img/halftone.png);
+}
+
+.destName{
+  font-family: @od-serif;
+  font-size: @fs * 0.9;
+}
+
+.infoWindow > a{
+  display: block;
+  color: @od-orange;
+  &:hover{
+    color: @od-o-hover;
+  }
 }
 
 
