@@ -30,10 +30,15 @@ exports.create = (req, res)=>{
 exports.index = (req, res)=>{
   var newDates = [];
   Meeting.findByInviteeId(req.session.userId, inviteeDates=>{
-    Meeting.readyDateInvites(inviteeDates, newDates=>{
-      User.getSuitors(res.locals.user, (suitors, matches)=>{
-        res.render('dates/index', {dateInvites: newDates, suitors: suitors, matches: matches});
+    if(inviteeDates.length){
+      Meeting.readyDateInvites(inviteeDates, newDates=>{
+        User.getSuitors(res.locals.user, (suitors, matches)=>{
+          res.render('dates/index', {dateInvites: newDates, suitors: suitors, matches: matches});
+        });
       });
+    }
+    User.getSuitors(res.locals.user, (suitors, matches)=>{
+      res.render('dates/index', {dateInvites: null, suitors: suitors, matches: matches});
     });
   });
 };

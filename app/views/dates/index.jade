@@ -11,64 +11,68 @@ block content
 
       section.confirmed-dates-box
         h4 Confirmed Dates
-        each date in dateInvites
-          if(date.isConfirmed)
-            .date-item
-              .image-box
-                img(src=date.creatorPhoto)
-              .place-name= date.location.name
-              .time= date.day
-              button View
+        if(dateInvites)
+          each date in dateInvites
+            if(date.isConfirmed)
+              .date-item
+                .image-box
+                  img(src=date.creatorPhoto)
+                .place-name= date.location.name
+                .time= date.day
+                button View
 
       section.proposed-dates-box
         h3 Proposed Dates
-        each date in dateInvites
-          if(!date.isConfirmed)
-            .date-item
-              .image-box
-                img(src=date.creatorPhoto)
-              .place-name= date.location.name
-              .time= date.day
-              button View
+        if(dateInvites)
+          each date in dateInvites
+            if(!date.isConfirmed)
+              .date-item
+                .image-box
+                  img(src=date.creatorPhoto)
+                .place-name= date.location.name
+                .time= date.day
+                button View
 
     section.interested-box
       h3 Interested
       .interested-box__inner
-        each suitor in suitors
-          .interested-person
-            .image-box
-               if(suitor.photos.length)
-                     each photo,i in suitor.photos
-                       if(photo.isPrimary)
-                         img(src=photo.path)
-                   else
-                     img(src='/img/#{suitor.gender}.png')
-            .name= suitor.firstName
-            .profile-link-box
-              a.profile-link(href='/users/#{suitor._id}') Profile
-            .remove-interest-box X
+        if(suitors)
+          each suitor in suitors
+            .interested-person
+              .image-box
+                 if(suitor.photos.length)
+                       each photo,i in suitor.photos
+                         if(photo.isPrimary)
+                           img(src=photo.path)
+                     else
+                       img(src='/img/#{suitor.gender}.png')
+              .name= suitor.firstName
+              .profile-link-box
+                a.profile-link(href='/users/#{suitor._id}') Profile
+              .remove-interest-box X
 
     section.mutual-box
       h3 Mutual
       .mutual-box__inner
         .mutual-box__another-inner
           //- .arrow.arrow-left arrow
-          each match in matches
-            .mutual-person
-              .person-name= match.firstName
-              .image-box
-                if(match.photos.length)
-                  each photo,i in match.photos
-                    if(photo.isPrimary)
-                      img(src=photo.path)
-                      .blurb= photo.blurb
-                else
-                  img(src='/img/#{match.gender}.png')
-              .profile-link-box
-                a.profile-link(href='/users/#{match._id}') Profile
-              .button-box
-                button#invite-mutual-person Propose Date
-                button#invite-contact-person Propose Contact
+          if(matches)
+            each match in matches
+              .mutual-person
+                .person-name= match.firstName
+                .image-box
+                  if(match.photos.length)
+                    each photo,i in match.photos
+                      if(photo.isPrimary)
+                        img(src=photo.path)
+                        .blurb= photo.blurb
+                  else
+                    img(src='/img/#{match.gender}.png')
+                .profile-link-box
+                  a.profile-link(href='/users/#{match._id}') Profile
+                .button-box
+                  button#invite-mutual-person Propose Date
+                  button#invite-contact-person Propose Contact
 
         //- .button-box
         //-   button#invite-mutual-person Propose Date
