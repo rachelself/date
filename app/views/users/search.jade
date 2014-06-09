@@ -7,19 +7,20 @@ block content
     header.header
       include ../shared/nav
 
-    .darth-vader
+    section.top-section
       p.big-text Find your match.
 
-    //- section
-    //-   select Select
-    //-     option Option
-    //-
-    //-   button Go
+    section.select-section
+      select.form-control Select
+        option Option
+      button.add Add
+      button.go Go
 
-    .person
-      .image-box
-        img(src='/img/old-lady.jpg' alt='')
-      .bio-box
-        p.bio-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores et aliquid, molestias nulla vel aperiam officia harum perferendis dolor error illum tempora blanditiis ipsa tempore impedit aspernatur cum architecto perspiciatis officiis, recusandae amet?...
-        .name A name here.
-      button View
+    section.person-box
+      .person
+        .image-box
+          img(src='/img/old-lady.jpg' alt='')
+        .bio-box
+          p.bio-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores et aliquid, molestias nulla vel aperiam officia harum perferendis dolor error illum tempora blanditiis ipsa tempore impedit aspernatur cum architecto perspiciatis officiis, recusandae amet?
+          .name A name here.
+        button.btn View
