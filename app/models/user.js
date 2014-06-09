@@ -49,7 +49,7 @@ class User {
 
   updatePhotos(photos){
     this.photos = [];
-    if(photos.length === undefined){
+    if(photos.fileName.length === undefined){
       var photo = {};
       photo.fileName = photos.fileName;
       photo.path = photos.path;
