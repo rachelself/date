@@ -18,7 +18,8 @@ block content
       .top-section-text
         p.teaser-text--big Real people meeting in real life. Furreal.
         p.teaser-text--tagline Get started
-        .icon-arrow-down Arrow
+        a(href='#features')
+           .icon-arrow-down
 
     section#features.features
       .img-wrapper
@@ -34,21 +35,21 @@ block content
       .sign-up__inner
         h2 Create Account
         form(action='/users' method='post')
-          input(type='text', name='firstName', placeholder='First Name')
-          input(type='text', name='lastName', placeholder='Last Name')
-          input(type='email', name='email', placeholder='Email')
-          input(type='password', name='password', placeholder='Password')
-          select(name='gender')
+          input.form-control(type='text', name='firstName', placeholder='First Name', autofocus=true)
+          input.form-control(type='text', name='lastName', placeholder='Last Name')
+          input.form-control(type='email', name='email', placeholder='Email')
+          input.form-control(type='password', name='password', placeholder='Password')
+          select.form-control(name='gender')
             option Select Your Gender
             option Male
             option Female
-          input(type='text', name='location', placeholder='Zip Code')
-          select(name='lookingFor')
+          input.form-control(type='text', name='location', placeholder='Zip Code')
+          select.form-control(name='lookingFor')
             option Select What You're Looking For
             option Male
             option Female
-          input(type=number, name='age', placeholder='Age')
-          button Get Started
+          input.form-control(type=number, name='age', placeholder='Age')
+          button.btn.btn-primary Get Started
 
   section.loginForm
     form#sign-in.account-form--outer(action='/users/login', method='post')
