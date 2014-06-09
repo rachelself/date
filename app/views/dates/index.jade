@@ -8,9 +8,11 @@ block content
       include ../shared/nav
 
     section.dates-box
+      h3 Dates
 
       section.confirmed-dates-box
         h4 Confirmed Dates
+        .inner-date-wrapper
         if(dateInvites)
           each date in dateInvites
             if(date.isConfirmed)

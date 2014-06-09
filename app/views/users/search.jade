@@ -7,14 +7,14 @@ block content
     header.header
       include ../shared/nav
 
-    .darth-vader
+    section.top-section
       p.big-text Find your match.
 
-    //- section
-    //-   select Select
-    //-     option Option
-    //-
-    //-   button Go
+    section.select-section
+      select.form-control Select
+        option Option
+      button.add Add
+      button.go Go
 
     each user in users
       .person

@@ -43,8 +43,6 @@ block content
               li= value
 
     else
-      button
-        a(href='/users/editProfile') Edit Profile
       section.bio
         img.badge
         .image-box
@@ -63,6 +61,11 @@ block content
             li= user.age
         .inner-bio-box
           p.bio-text= user.bio
+        .editProfile
+          a(href='/users/editProfile')
+            img.edit-icon(src='/img/pencil.svg')
+            p Edit Profile
+
 
       section.interests-values-box
         .interests-box
@@ -75,3 +78,6 @@ block content
           ul
             each value in user.values
               li= value
+
+block scripts
+  script(src='/js/es6/compiled/profile.js')

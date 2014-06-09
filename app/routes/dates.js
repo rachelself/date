@@ -31,15 +31,17 @@ exports.index = (req, res)=>{
   var newDates = [];
   Meeting.findByInviteeId(req.session.userId, inviteeDates=>{
     if(inviteeDates.length){
+      console.log('=====================================INVITES');
       Meeting.readyDateInvites(inviteeDates, newDates=>{
         User.getSuitors(res.locals.user, (suitors, matches)=>{
           res.render('dates/index', {dateInvites: newDates, suitors: suitors, matches: matches});
         });
       });
+    } else {
+      User.getSuitors(res.locals.user, (suitors, matches)=>{
+        res.render('dates/index', {dateInvites: null, suitors: suitors, matches: matches});
+      });
     }
-    User.getSuitors(res.locals.user, (suitors, matches)=>{
-      res.render('dates/index', {dateInvites: null, suitors: suitors, matches: matches});
-    });
   });
 };
 
