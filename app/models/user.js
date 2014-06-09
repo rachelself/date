@@ -48,8 +48,11 @@ class User {
   }
 
   updatePhotos(photos){
+    console.log(photos);
+    console.log('length===============');
+    console.log(photos.fileName.length);
     this.photos = [];
-    if(photos.fileName.length === undefined){
+    if(typeof photos.fileName === 'string'){
       var photo = {};
       photo.fileName = photos.fileName;
       photo.path = photos.path;
