@@ -764,6 +764,10 @@ html {
   overflow-x: hidden; // prevents sideways scrolling.
 }
 
+.container {
+  margin-bottom: @lh * 2;
+}
+
 // From hereon, feel free to delete anything. The rest is just examples.
 // Also look up "Color Operation Functions" and "Color Blending Functions": ( http://lesscss.org/functions/#color-operations )
 
@@ -1298,8 +1302,6 @@ header {
   }
 }
 
-
-
 .container__new-date {
   > .top-section,
   > .form-box,
@@ -1309,30 +1311,85 @@ header {
   }
   > .top-section {
     border: 1px solid #ccc;
-    > h3 {
-      font-size: @lh * 1.5;
+    > h3,
+    > p {
       text-align: center;
+    }
+    > h3 {
+      display: block;
+      font-size: @lh * 1.3;
+      padding-left: @lh;
+      text-align: center;
+    }
+    > p {
+      font-size: @fs * .85;
     }
   }
   > .form-box {
-    background: @emerald;
+    > h4 {
+      display: block;
+      margin: 0 auto @lh / 2;
+      width: 61%;
+    }
+    .form-box__inner {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+      width: 61%;
+      > .date-and-time,
+      > .controls {
+        border: 1px solid #ccc;
+        margin-bottom: @lh;
+        padding: @lh / 2;
+        width: 50%;
+        > p,
+        > input,
+        > textarea {
+          margin: 0 auto @lh / 4;
+          max-width: @lh * 17;
+        }
+        > textarea {
+          height: @lh * 3.5;
+        }
+      }
+      > .date-and-time {
+        input {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+      > .controls {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        > input {
+          max-width: @lh * 14;
+        }
+        > button {
+          padding: @lh / 4;
+          width: @lh * 3;
+        }
+      }
+    }
   }
-  // > .controls,
-  // > .date-and-time {
-  //   > input {
-  //   }
-  // }
-  > .controls {
-    border: 1px solid #ccc;
+  > .map-box {
+    margin: 0 auto;
+    text-align: center;
+    > h1 {
+      display: block;
+      margin: @lh auto;
+      text-align: left;
+      width: 800px;
+    }
+    > .map {
+      margin: 0 auto;
+    }
   }
-  > .date-and-time {
-    border: 1px solid #ccc;
-  }
+
   > .search-listing {
     border: 1px solid #ccc;
-  }
-  > .map {
-    margin: 0 auto;
   }
   > .street-map {
     margin: 0 auto;

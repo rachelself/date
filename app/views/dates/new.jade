@@ -9,24 +9,29 @@ block content
 
     section.top-section
       h3 New Date Proposal
-      //- p.new-date__tagline for #{user.name}
+      p.tagline for #{user.firstName}
 
     section.form-box
+      h4 When are you available?
+      .form-box__inner
 
-    #controls.controls
-      h1 Google Map
-      input#cityOrZip(type='text', autofocus=true, placeholder='Zip Code or City, State')
-      input#companyName(type='text', placeholder='Italian, Theaters, Burgers, Beer, etc.')
-      button#search Search
+        #dateAndTime.date-and-time
+          //- p <em>When are you available?</em>
+          textarea.form-control#availability(type='textarea', placeholder='So does next week work better for you?')
+          input.form-control#date(type='date' placeholder='07/11/2015')
+          input.form-control#time(type='time' placeholder='8:00pm')
 
-    #dateAndTime.date-and-time
-      input#date(type='date')
-      input#time(type='time')
-      input#availability(type='textarea', placeholder='I am also available most evenings next week if that works better for you...')
+        #controls.controls
+          input.form-control#cityOrZip(type='text', autofocus=true, placeholder='Zip Code or City, State')
+          input.form-control#companyName(type='text', placeholder='Italian, Theaters, Burgers, Beer, etc.')
+          button#search Find
 
     #searchListing.search-listing
 
-    #map.map
+    .map-box
+      h1 Map It
+      #map.map
+
     #streetMap.street-map
 
 
