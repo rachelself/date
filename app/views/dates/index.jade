@@ -24,7 +24,8 @@ block content
                 button View
 
       section.proposed-dates-box
-        h3 Proposed Dates
+        h4 Proposed Dates
+        .inner-date-wrapper
         if(dateInvites)
           each date in dateInvites
             if(!date.isConfirmed)
