@@ -16,7 +16,7 @@ var User = traceur.require(__dirname + '/../../app/models/user.js');
 
 
 exports.new = (req, res)=>{
-  res.render('dates/new');
+  res.render('dates/new', {inviteeId: req.params.id});
 };
 
 exports.create = (req, res)=>{
@@ -30,18 +30,21 @@ exports.create = (req, res)=>{
 exports.index = (req, res)=>{
   var newDates = [];
   Meeting.findByInviteeId(req.session.userId, inviteeDates=>{
-    if(inviteeDates.length){
-      console.log('=====================================INVITES');
-      Meeting.readyDateInvites(inviteeDates, newDates=>{
-        User.getSuitors(res.locals.user, (suitors, matches)=>{
-          res.render('dates/index', {dateInvites: newDates, suitors: suitors, matches: matches});
+    Meeting.findByCreatorId(req.session.userId, creatorDates=>{
+      if(inviteeDates.length){
+        Meeting.readyDateInvites(inviteeDates, newDates=>{
+          User.getSuitors(res.locals.user, (suitors, matches)=>{
+            res.render('dates/index', {creatorDates: creatorDates, dateInvites: newDates, suitors: suitors, matches: matches});
+          });
         });
-      });
-    } else {
-      User.getSuitors(res.locals.user, (suitors, matches)=>{
-        res.render('dates/index', {dateInvites: null, suitors: suitors, matches: matches});
-      });
-    }
+      } else {
+        User.getSuitors(res.locals.user, (suitors, matches)=>{
+          console.log('======================suitors');
+          console.log(suitors);
+          res.render('dates/index', {creatorDates: creatorDates, dateInvites: null, suitors: suitors, matches: matches});
+        });
+      }
+    });
   });
 };
 

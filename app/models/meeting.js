@@ -61,16 +61,25 @@ class Meeting {
     var newDates = [];
     dates.forEach(date=>{
       User.findById(date.creatorId, creator=>{
-        creator.photos.forEach(p=>{
-          if(p.isPrimary){
-            date.creatorPhoto = p.path;
-            date.day = moment(date.day).format('MMM Do YYYY, h:mm a');
-            newDates.push(date);
-            if(newDates.length === dates.length){
-              fn(newDates);
+        if(creator.photos.length){
+          creator.photos.forEach(p=>{
+            if(p.isPrimary){
+              date.creatorPhoto = p.path;
+              date.day = moment(date.day).format('MMM Do YYYY, h:mm a');
+              newDates.push(date);
+              if(newDates.length === dates.length){
+                fn(newDates);
+              }
             }
+          });
+        } else {
+          date.creatorPhoto = `/img/${creator.gender}.png`;
+          date.day = moment(date.day).format('MMM Do YYYY, h:mm a');
+          newDates.push(date);
+          if(newDates.length === dates.length){
+            fn(newDates);
           }
-        });
+        }
       });
     });
   }

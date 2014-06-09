@@ -13,28 +13,40 @@ block content
       section.confirmed-dates-box
         h4 Confirmed Dates
         .inner-date-wrapper
-        if(dateInvites)
-          each date in dateInvites
-            if(date.isConfirmed)
-              .date-item
-                .image-box
-                  img(src=date.creatorPhoto)
-                .place-name= date.location.name
-                .time= date.day
-                button View
+          if(dateInvites)
+            each date in dateInvites
+              if(date.isConfirmed)
+                .date-item
+                  .image-box
+                    img(src=date.creatorPhoto)
+                  .place-name= date.location.name
+                  .time= date.day
+                  a(href='/dates/#{date._id}')
+                    button View
+          if(creatorDates)
+            each date in creatorDates
+              if(date.isConfirmed)
+                .date-item
+                  .image-box
+                    img(src=date.creatorPhoto)
+                  .place-name= date.location.name
+                  .time= date.day
+                  a(href='/dates/#{date._id}')
+                    button View
 
       section.proposed-dates-box
         h4 Proposed Dates
         .inner-date-wrapper
-        if(dateInvites)
-          each date in dateInvites
-            if(!date.isConfirmed)
-              .date-item
-                .image-box
-                  img(src=date.creatorPhoto)
-                .place-name= date.location.name
-                .time= date.day
-                button View
+          if(dateInvites)
+            each date in dateInvites
+              if(!date.isConfirmed)
+                .date-item
+                  .image-box
+                    img(src=date.creatorPhoto)
+                  .place-name= date.location.name
+                  .time= date.day
+                  a(href='/dates/#{date._id}')
+                    button View
 
     section.interested-box
       h3 Interested
@@ -74,7 +86,8 @@ block content
                 .profile-link-box
                   a.profile-link(href='/users/#{match._id}') Profile
                 .button-box
-                  button#invite-mutual-person Propose Date
+                  a(href='/dates/new/#{match._id}')
+                    button#invite-mutual-person Propose Date
                   button#invite-contact-person Propose Contact
 
         //- .button-box

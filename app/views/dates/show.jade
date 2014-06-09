@@ -27,13 +27,14 @@ block content
         p= meeting.location.phone
         button(data-lat='#{meeting.location.lat}', data-lng='#{meeting.location.lng}')#directions Get Directions
 
-      .controls
-        form(action='/dates/#{meeting._id}', method='POST')
-          button#confirmDate Confirm
-        form(action='/dates/destroy/#{meeting._id}', method='POST')
-          button#declineDate Decline
-        a(href='/dates/#{meeting._id}/edit')
-          button#editDate Edit Details
+      if(!meeting.isConfirmed)
+        .controls
+          form(action='/dates/#{meeting._id}', method='POST')
+            button#confirmDate Confirm
+          form(action='/dates/destroy/#{meeting._id}', method='POST')
+            button#declineDate Decline
+          a(href='/dates/#{meeting._id}/edit')
+            button#editDate Edit Details
 
 
     #streetView

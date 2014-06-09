@@ -49,18 +49,27 @@ class User {
 
   updatePhotos(photos){
     this.photos = [];
-    photos.fileName.forEach((p,i)=>{
+    if(photos.length === undefined){
       var photo = {};
-      photo.fileName = photos.fileName[i];
-      photo.path = photos.path[i];
-      if(i === (photos.primary * 1)){
-        photo.isPrimary = true;
-      } else {
-        photo.isPrimary = false;
-      }
-      photo.blurb = photos.blurb[i];
+      photo.fileName = photos.fileName;
+      photo.path = photos.path;
+      photo.isPrimary = true;
+      photo.blurb = photos.blurb;
       this.photos.push(photo);
-    });
+    } else {
+      photos.fileName.forEach((p,i)=>{
+        var photo = {};
+        photo.fileName = photos.fileName[i];
+        photo.path = photos.path[i];
+        if(i === (photos.primary * 1)){
+          photo.isPrimary = true;
+        } else {
+          photo.isPrimary = false;
+        }
+        photo.blurb = photos.blurb[i];
+        this.photos.push(photo);
+      });
+    }
   }
 
   static getSuitors(user, fn){
@@ -108,9 +117,7 @@ class User {
             }
           });
         });
-      }
-
-      if(matches.length){
+      } else if(matches.length) {
         matches.forEach(m=>{
           User.findById(m, newM=>{
             newMatches.push(newM);
@@ -140,8 +147,8 @@ class User {
         user.location = obj.location;
         user.lookingFor = obj.lookingFor;
         user.age = obj.age;
-        user.interests = [];
-        user.values = [];
+        user.interests = ['interest1', 'interest2', 'interest3'];
+        user.values = ['value1', 'value2', 'value3'];
         user.bio ='';
         user.suitors = [];
         user.blockedUsers = [];

@@ -39,7 +39,7 @@ function load(app, fn){
 
 
   app.get('/dates', dbg, dates.index);
-  app.get('/dates/new', dbg, dates.new);
+  app.get('/dates/new/:id', dbg, dates.new);
   app.post('/dates', dbg, dates.create);
   app.get('/dates/:id/edit', dbg, dates.edit);
   app.get('/dates/:id', dbg, dates.show);
